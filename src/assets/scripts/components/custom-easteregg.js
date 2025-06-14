@@ -2,7 +2,7 @@ class customEasteregg extends HTMLElement {
   constructor() {
     super();
     // Initialize with default keywords
-    this.keywords = ['eleventy', 'excellent'];
+    this.keywords = ['bruchbuehne', 'bruchbühne'];
     // Add any custom keyword passed as an attribute
     const customKeyword = this.getAttribute('keyword');
     if (customKeyword) {
@@ -10,7 +10,7 @@ class customEasteregg extends HTMLElement {
     }
 
     this.shape = this.getAttribute('shape') || '⭐️';
-    this.particleCount = parseInt(this.getAttribute('particle-count'), 10) || 30;
+    this.particleCount = parseInt(this.getAttribute('particle-count'), 30) || 60;
     this.codes = this.keywords.map(keyword => keyword.split(''));
     this.indexes = new Array(this.keywords.length).fill(0);
   }

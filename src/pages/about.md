@@ -1,23 +1,12 @@
 ---
-title: About
+title: Über uns
 permalink: /about/index.html
 description: 'Eleventy Excellent is inspired bythe companion website of Andy Bell’s talk "Be the browser’s mentor, not its micromanager".'
 layout: page
 ---
 
-This starter uses modern CSS, fluid type & space, flexible Layouts and Progressive Enhancement, wrapped in a basic template.
+Hey hey 👋👋,
 
-It is built around the CSS boilerplate by Andy Bell and inspired by Andy's talk **'Be the browser’s mentor, not its micromanager'**.
+Wir sind eine studentische Theatergruppe aus Tübingen. Uns gibt es seit Anfang 2024 (so halb) und seit Ende 2024 (ganz offiziell). Wir haben uns von den <a href="https://sternenwanderer.github.io">Sternenwandereren</a> getrennt.
 
-If you want to know exactly how it all works, [read this article on piccalil.li](https://piccalil.li/blog/a-css-project-boilerplate/).
-
-The aim is to spread the idea and use of this _excellent_ workflow. To work with it efficiently you should be familiar with [cube.fyi](https://cube.fyi/), [utopia.fyi](https://utopia.fyi/) and [every-layout.dev](https://every-layout.dev/).
-
-- buildexcellentwebsit.es
-- Remix the original: https://glitch.com/edit/#!/remix/build-excellent-websites
-- Study the [original CSS boilerplate](https://github.com/Set-Creative-Studio/cube-boilerplate/tree/main)
-
-## Watch the talk
-
-<div><custom-youtube @slug="JqnMI1AXl6w" @label="Andy Bell – Be the browser’s mentor, not its micromanager"> </custom-youtube></div>
-
+Unser Fokus liegt hauptsächlich auf modernen Komödien und abstrakter Inszenierung.

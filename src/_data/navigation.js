@@ -1,34 +1,22 @@
 export default {
   top: [
     {
-      text: 'About',
+      text: 'Über uns',
       url: '/about/'
     },
     {
-      text: 'Docs',
-      url: '/get-started/'
+      text: 'Inszenierungen',
+      url: '/inszenierungen/'
     },
-    {
-      text: 'Built with',
-      url: '/built-with/'
-    },
-    {
-      text: 'Blog',
-      url: '/blog/'
-    }
   ],
   bottom: [
     {
-      text: 'Style guide',
-      url: '/styleguide/'
+      text: 'Impressum',
+      url: '/impressum/'
     },
     {
-      text: 'Imprint',
-      url: '/imprint/'
+      text: 'Datenschutz',
+      url: '/datenschutz/'
     },
-    {
-      text: 'Privacy',
-      url: '/privacy/'
-    }
   ]
 };

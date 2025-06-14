@@ -1,5 +1,5 @@
 {
   "layout": "post",
-  "tags": "posts",
-  "permalink": "/blog/{{ title | slugify }}/index.html"
+  "tags": "inszenierungen",
+  "permalink": "/inszenierungen/{{ title | slugify }}/index.html"
 }
