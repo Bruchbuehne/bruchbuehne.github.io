@@ -44,9 +44,6 @@ gallery:
 <li>Susanne König—Technik, die Stimme aus der Menge</li>
 </ul>
 
-## Programmheft
-Unser Programmheft könnt ihr [hier]('/assets/programmhefte/2024-engel/programmheft.pdf') herunterladen.
-
 <ul class="gallery" role="list" style="padding: 0;">
   {%- for item in gallery -%}
     <li>{% image item.image, item.alt %}</li>

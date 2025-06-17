@@ -17,34 +17,21 @@ gallery:
   - image: ./src/assets/images/gallery/2025-nashoerner/rhino-7.jpg
 ---
 
+ {% if reservierung.verkauf %}
+    <article class="full | region">
+    <div class="wrapper flow prose">
+      <p>
+        <a href="/reservierung/" class="button">🎟️ Jetzt Karten für {{ reservierung.titel }} reservieren 🎟️</a>
+      </p>
+      <p>
+    </div>
+  </article>
+  {% endif %}
+
 ## Eckdaten
 <ul>
 <li>Autor: Eugène Ionesco</li>
 <li>Termine: 7., 8., 10. und 10. Juli 2025</li>
-</ul>
-
-## Cast & Crew
-<ul>
-<li>Anka Doese—Mama</li>
-<li>Ilea Rahn—Mama</li>
-<li>Susanne König—Mama</li>
-<li>Kilian Niemann—Papa</li>
-<li>Jakob Sappler—nashoerner</li>
-<li>Sarina Vitillo—Babette/Elisabeth</li>
-<li>Jan Riebe—Jeannot</li>
-<li>Sarah Marie</li>
-<li>Jule Lenz—Lucie</li>
-<li>Gabriel Jann—Gérard</li>
-<li>Ronja Pröllochs—Frau Duperri</li>
-<li>Eleni Brüggemann—Hervé (Unteroffizier)</li>
-<li>Regina Gejer—Ministerpräsident</li>
-<li>Miriam Mauthe—Nachrichtensprecher</li>
-<li>Maruscha Winkler—Kleiner Soldat</li>
-<li>Hannah van Sanvliet—1. Polizist</li>
-<li>Marie Haeßler—2. Polizist</li>
-<li>Kate Zhevelyuk—Mann in schwarz</li>
-<li>Rian Knittel—Technik</li>
-<li>Nicolai Plenk—Technik</li>
 </ul>
 
 <ul class="gallery" role="list" style="padding: 0;">

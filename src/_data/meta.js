@@ -15,7 +15,7 @@ export const author = {
 export const creator = {
   name: 'Nicolai Plenk', // i.e. Lene Saile - creator's (developer) name.
   email: 'nicolai@mujstan.email',
-  website: 'https://nicola.ink',
+  website: 'https://nicolai.ink',
   social: 'https://instagram.com/untitledsophisticated', // i.e. https://instagram.com/lenesaile - creator's social media link
 };
 export const pathToSvgLogo = 'src/assets/svg/misc/logo.svg'; // used for favicon generation
@@ -83,7 +83,7 @@ export const themeSwitch = {
 }; */
 export const viewRepo = {
   // this is for the view/edit on github link. The value in the package.json will be pulled in.
-  allow: true,
+  allow: false,
   infoText: 'View this page on GitHub'
 };
 export const easteregg = true;
