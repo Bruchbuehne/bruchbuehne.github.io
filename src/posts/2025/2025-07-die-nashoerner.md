@@ -1,6 +1,6 @@
 ---
 title: 'Die Nashörner'
-description: "Alle verwandeln sich in Nashörner, nur Beringer nicht. Aber welche? Indische? Afrikanische?"
+description: "Alle verwandeln sich in Nashörner, nur Behringer nicht."
 discover:
   description: "Wahlweise ein oder zwei Hörner"
 date: 2025-01-19
