@@ -1,0 +1,6 @@
+verkauf: true # <-- false = Keine Reservierung / true = Reservierung aktiviert
+ausverkauft: false # wenn Keine tickets übrig
+titel: "Die Nashörner"
+untertitel: "von Eugène Ionesco, übersetzt von Hans Rothe"
+preis: "Auf Spendenbasis"
+spreadsheet_deployment: https://script.google.com/macros/s/AKfycbz11TBmXQkgSMS0hhioYdXNlCsuZVWpo-RvXsdIfT-jUIhCN2yQGyx0RmXs-qyZEte1/exec

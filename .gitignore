@@ -26,7 +26,7 @@ Temporary Items
 .apdisk
 
 # Local Build Artefacts
-_site/
+dist/
 **/node_modules/**
 package-lock.json
 .cache/

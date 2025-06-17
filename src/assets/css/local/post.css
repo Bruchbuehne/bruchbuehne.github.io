@@ -14,8 +14,7 @@
 .post h1 + :is(picture, figure) img {
   max-inline-size: var(--max-img-width, 100%);
   block-size: auto;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  object-fit: full;
   object-position: center;
 }
 

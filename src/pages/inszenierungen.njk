@@ -17,11 +17,15 @@ permalink: 'inszenierungen/{% if pagination.pageNumber >=1 %}page-{{ pagination.
     {% svg "divider/edgy", null, "divider" %}
   </header>
 
-  <div class="region flow prose" style="--region-space-top: var(--space-xl-2xl)">
+ {% if reservierung.verkauf %}
+      <a href="/reservierung/" class="button">🎟️ Jetzt Karten für {{ reservierung.titel }} reservieren 🎟️</a>
+    {% endif %}
+
+  {# <div class="region flow prose" style="--region-space-top: var(--space-xl-2xl)">
     <p>
         Maybe some text about stagings we've done in the past.
     </p>
-  </div>
+  </div> #}
 
   <custom-masonry layout="50-50">
 		{% asyncEach item in pagination.items %}

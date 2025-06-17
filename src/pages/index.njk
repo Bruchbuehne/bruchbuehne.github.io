@@ -15,14 +15,26 @@ inszenierungen:
     {% svg "divider/waves", null, "divider" %}
   </header>
 
-  <article class="full | region">
+ {% if reservierung.verkauf %}
+    <article class="full | region">
+    <div class="wrapper flow prose">
+      <p>
+        <a href="/reservierung/" class="button">🎟️ Jetzt Karten für {{ reservierung.titel }} reservieren 🎟️</a>
+      </p>
+      <p>
+    </div>
+  </article>
+      
+    {% endif %}
+
+  {# <article class="full | region">
     <div class="wrapper flow prose">
       <p>
         Some text about the group would be nice, so this is just a placeholder.
       </p>
       <p>
     </div>
-  </article>
+  </article> #}
 
   <section class="full | region">
     <div class="wrapper flow prose">

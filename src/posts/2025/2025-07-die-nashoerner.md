@@ -1,8 +1,8 @@
 ---
 title: 'Die Nashörner'
-description: ""
+description: "Trampeln alles nieder—Beweisstück A Schnurri, Beweisstück B Schnetterlings Trepp"
 discover:
-  description: ""
+  description: "Wahlweise ein oder zwei Hörner"
 date: 2025-01-19
 image: '/assets/images/gallery/2025-nashoerner/rhino-poster.png'
 alt: 'Poster von Die Nashörner'
