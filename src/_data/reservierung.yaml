@@ -1,15 +1,5 @@
 verkauf: true # <-- false = Keine Reservierung / true = Reservierung aktiviert
 ausverkauft: false # wenn Keine tickets übrig
 titel: "Die Nashörner"
-description: | 
-  Behringer kommt zu spät. Wie immer.  Verkatert, verwirrt und verloren taumelt er durch das Leben. Ein Häufchen Elend in menschlicher Hülle, ohne Halt in der Gesellschaft, welche ihn umgibt. 
-  Sein Chef? Genervt. 
-  Sein bester Freund Hans? Beleidigt. 
-  Seine große Liebe Daisy? Unerreichbar. 
-  Doch seine alltägliche Existenzkrise wird plötzlich durch ein Nashorn gestört, welches in vollem Galopp über den Marktplatz stürmt und die Stadt in Aufruhr versetzt. Was folgt ist eine Plage biblischen Ausmaßes. Immer mehr unbescholtene Bürger verwandeln sich in schnaufende, stampfende, dickhäutige Kolosse. Und bald liegt nicht nur Behringers Leben in Trümmern, sondern die ganze Stadt.
-  Eugène Ionescos Meisterwerk des absurden Theaters trampelt über unsere Bühne und konfrontiert uns mit einigen der größten Fragen unserer Zeit:
-  Was ist uns wichtiger: Unsere Prinzipien oder unsere Gemeinschaft?
-  Was bedeutet Stärke und wie weit würden wir gehen, um sie zu erlangen?
-  Und sind das eigentlich indische oder afrikanische Nashörner?
-preis: "Auf Spendenbasis"
+preis: "auf Spendenbasis"
 spreadsheet_deployment: https://script.google.com/macros/s/AKfycbz11TBmXQkgSMS0hhioYdXNlCsuZVWpo-RvXsdIfT-jUIhCN2yQGyx0RmXs-qyZEte1/exec

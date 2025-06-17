@@ -18,7 +18,15 @@ hideTitle: true
 <article class="full | region">
   <div class="wrapper flow prose">
     <p>
-      {{reservierung.description}}
+      Behringer kommt zu spät. Wie immer.  Verkatert, verwirrt und verloren taumelt er durch das Leben. Ein Häufchen Elend in menschlicher Hülle, ohne Halt in der Gesellschaft, welche ihn umgibt.
+      <br><br>Sein Chef? Genervt.
+      <br><br>Sein bester Freund Hans? Beleidigt.
+      <br><br>Seine große Liebe Daisy? Unerreichbar.
+      <br><br>Doch seine alltägliche Existenzkrise wird plötzlich durch ein Nashorn gestört, welches in vollem Galopp über den Marktplatz stürmt und die Stadt in Aufruhr versetzt. Was folgt ist eine Plage biblischen Ausmaßes. Immer mehr unbescholtene Bürger verwandeln sich in schnaufende, stampfende, dickhäutige Kolosse. Und bald liegt nicht nur Behringers Leben in Trümmern, sondern die ganze Stadt.
+      <br><br>Eugène Ionescos Meisterwerk des absurden Theaters trampelt über unsere Bühne und konfrontiert uns mit einigen der größten Fragen unserer Zeit:
+      <br><br>Was ist uns wichtiger: Unsere Prinzipien oder unsere Gemeinschaft?
+      <br><br>Was bedeutet Stärke und wie weit würden wir gehen, um sie zu erlangen?
+      <br><br>Und sind das eigentlich indische oder afrikanische Nashörner?
     </p>
   </div>
 </article>
@@ -26,20 +34,20 @@ hideTitle: true
 <div class="wrapper">
   <header class="full | section" style="--spot-color: var(--color-secondary)">
     <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
-      <h2 class="text-center" style="color: var(--color-light);"> {{reservierung.preis}} </h2
+      <h2 class="text-center" style="color: var(--color-light);">Eintritt {{reservierung.preis}} </h2
     </div>
   </header>
 
+<article class="full | region">
+  <div class="wrapper flow prose">
+    <p>
+      Hier könnt ihr Karten für die Vorstellungen von <strong>Die Nashörner</strong> reservieren.
+      <br>Bitte beachtet, dass diese an der Abendkasse zur Abholung bis zu 10 Minuten vor Vorstellungsbeginn hinterlegt werden.
+      <br>Bei Verspätung oder Nichterscheinen behalten wir uns vor, die reservierten Karten wieder frei zu geben.
+    </p>
+  </div>
+</article>
 
-<h2>{{ reservierung.preis }}</h2>
-<br>
-<p>
-  Hier könnt ihr Karten für die Vorstellungen von <strong>Die Nashörner</strong> reservieren.
-  Bitte beachtet, dass diese an der Abendkasse zur Abholung bis zu 10 Minuten vor Vorstellungsbeginn hinterlegt werden.
-  Bei Verspätung oder Nichterscheinen behalten wir uns vor, die reservierten Karten wieder frei zu geben.
-</p>
-
-<br>
 
 {% if reservierung.ausverkauft %}
       <h1>Ausverkauft!</h1>
