@@ -6,6 +6,7 @@ pagination:
   data: collections.allPosts
   size: 8
 permalink: 'inszenierungen/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+
 ---
 
 <div class="wrapper">
@@ -16,10 +17,6 @@ permalink: 'inszenierungen/{% if pagination.pageNumber >=1 %}page-{{ pagination.
 
     {% svg "divider/edgy", null, "divider" %}
   </header>
-
- {% if reservierung.verkauf %}
-      <a href="/reservierung/" class="button">🎟️ Jetzt Karten für {{ reservierung.titel }} reservieren 🎟️</a>
-    {% endif %}
 
   {# <div class="region flow prose" style="--region-space-top: var(--space-xl-2xl)">
     <p>

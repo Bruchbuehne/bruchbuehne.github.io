@@ -1,13 +1,35 @@
 ---
 title: Reservierung
-layout: base.njk
 permalink: /reservierung/index.html
+description: 'Reservierung von Karten für die Vorstellungen von Die Nashörner'
+layout: page
+hideTitle: true
 ---
 
-<h1>Reservierung</h1>
+<div class="wrapper">
+  <header class="full | section" style="--spot-color: var(--color-secondary)">
+    <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
+      <h1 class="text-center" style="color: var(--color-light);"> {{title}}en für {{ reservierung.titel }}</h1>
+    </div>
 
-<br>
-<h1>{{ reservierung.titel }} {{ reservierung.untertitel }}</h1>
+    {% svg "divider/edgy", null, "divider" %}
+  </header>
+
+<article class="full | region">
+  <div class="wrapper flow prose">
+    <p>
+      {{reservierung.description}}
+    </p>
+  </div>
+</article>
+
+<div class="wrapper">
+  <header class="full | section" style="--spot-color: var(--color-secondary)">
+    <div class="section__inner flow region" style="--region-space-top: var(--space-xl-2xl)">
+      <h2 class="text-center" style="color: var(--color-light);"> {{reservierung.preis}} </h2
+    </div>
+  </header>
+
 
 <h2>{{ reservierung.preis }}</h2>
 <br>
@@ -16,6 +38,8 @@ permalink: /reservierung/index.html
   Bitte beachtet, dass diese an der Abendkasse zur Abholung bis zu 10 Minuten vor Vorstellungsbeginn hinterlegt werden.
   Bei Verspätung oder Nichterscheinen behalten wir uns vor, die reservierten Karten wieder frei zu geben.
 </p>
+
+<br>
 
 {% if reservierung.ausverkauft %}
       <h1>Ausverkauft!</h1>
@@ -55,7 +79,7 @@ permalink: /reservierung/index.html
   </div>
 
 
-  <button type="submit" id="submitButton">Reservieren</button>
+  <button data-button-variant="tertiary" id="submitButton">Reservieren</button>
 </form>
 
 <div id="meldung" style="margin-top: 1em; color: green;"></div>
