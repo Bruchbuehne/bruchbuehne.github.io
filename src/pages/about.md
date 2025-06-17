@@ -7,7 +7,7 @@ layout: page
 
 Hey hey 👋👋,
 
-Wir sind eine studentische Theatergruppe aus Tübingen. Uns gibt es seit Anfang 2024 (so halb) und seit Ende 2024 (ganz offiziell). Wir haben uns von den <a href="https://sternenwanderer.github.io">Sternenwandereren</a> getrennt.
+Wir sind eine studentische Theatergruppe aus Tübingen. Uns gibt es seit Anfang 2024 (so halb) und seit Ende 2024 (ganz offiziell). Wir haben uns von den <a href="https://sternenwanderer.github.io">Sternenwanderern</a> getrennt.
 
 ## Unsere Arbeitsweise
 
