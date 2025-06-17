@@ -5,6 +5,7 @@ discover:
 permalink: /imprint/index.html
 description: Impressum
 layout: page
+draft: true
 ---
 
 Edit your details in `_data/personal.yaml`

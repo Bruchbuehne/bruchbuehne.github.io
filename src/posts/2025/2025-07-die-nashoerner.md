@@ -1,6 +1,6 @@
 ---
 title: 'Die Nashörner'
-description: "Trampeln alles nieder—Beweisstück A Schnurri, Beweisstück B Schnetterlings Trepp"
+description: "Alle verwandeln sich in Nashörner, nur Beringer nicht. Aber welche? Indische? Afrikanische?"
 discover:
   description: "Wahlweise ein oder zwei Hörner"
 date: 2025-01-19
