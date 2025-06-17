@@ -21,7 +21,7 @@ export const cssConfig = eleventyConfig => {
         paths.push(`src/_includes/css/${baseName}`);
       } else if (inputPath.includes('/src/assets/css/components/')) {
         const baseName = path.basename(inputPath);
-        paths.push(`dist/assets/css/components/${baseName}`);
+        paths.push(`src/assets/css/components/${baseName}`);
       } else {
         return;
       }
