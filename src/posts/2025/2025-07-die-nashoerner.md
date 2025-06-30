@@ -31,7 +31,7 @@ gallery:
 ## Eckdaten
 <ul>
 <li>Autor: Eugène Ionesco</li>
-<li>Termine: 7., 8., 10. und 11. Juli 2025</li>
+<li>Termine: 7., 8., 10. und 11. Juli 2025 um 19:00</li>
 </ul>
 
 <ul class="gallery" role="list" style="padding: 0;">
