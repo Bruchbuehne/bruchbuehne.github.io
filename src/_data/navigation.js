@@ -12,11 +12,11 @@ export default {
   bottom: [
     {
       text: 'Impressum',
-      url: '/impressum/'
+      url: '/imprint/'
     },
     {
       text: 'Datenschutz',
-      url: '/datenschutz/'
+      url: '/privacy/'
     },
   ]
 };
