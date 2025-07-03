@@ -1,3 +1,4 @@
+// Adapted from https://github.com/Sternenwanderer/sternenwanderer.github.io.git (original author: @LukasProgress)
 function doPost(e) {
     const params = e.parameter;
     const name = params.name;

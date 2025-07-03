@@ -1,3 +1,4 @@
+// Adapted from https://github.com/Sternenwanderer/sternenwanderer.github.io.git (original author: @LukasProgress)
 const form = document.getElementById('reservation');
 const meldung = document.getElementById('meldung');
 const reserveButton = document.getElementById("submitButton");
