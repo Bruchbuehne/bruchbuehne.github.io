@@ -1,5 +1,5 @@
 # Adapted from https://github.com/Sternenwanderer/sternenwanderer.github.io.git (original author: @LukasProgress)
-verkauf: true # <-- false = Keine Reservierung / true = Reservierung aktiviert
+verkauf: false # <-- false = Keine Reservierung / true = Reservierung aktiviert
 ausverkauft: false # wenn Keine tickets übrig
 titel: "Die Nashörner"
 preis: "auf Spendenbasis"
