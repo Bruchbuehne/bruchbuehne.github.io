@@ -53,15 +53,12 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
-    formats: ['webp', 'jpeg'],
+    formats: ['avif', 'webp', 'jpeg'],
     widths: ['auto'],
-    htmlOptions: {
-      imgAttributes: {
-        loading: 'lazy',
-        decoding: 'async',
-        sizes: 'auto'
-      },
-      pictureAttributes: {}
+    defaultAttributes: {
+      loading: 'lazy',
+      decoding: 'async',
+      sizes: 'auto'
     }
   });
 
@@ -95,7 +92,7 @@ export default async function (eleventyConfig) {
   // --------------------- Passthrough File Copy
 
   // -- same path
-  ['src/assets/fonts/', 'src/assets/images/gallery/2024-engel', 'src/assets/images/gallery/2025-hase', 'src/assets/images/2025-nashoerner', 'src/assets/programmhefte'].forEach(path =>
+  ['src/assets/fonts/', 'src/assets/images/gallery/**', 'src/assets/programmhefte'].forEach(path =>
     eleventyConfig.addPassthroughCopy(path)
   );
 
