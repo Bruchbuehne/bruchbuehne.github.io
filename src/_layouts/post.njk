@@ -7,9 +7,9 @@ schema: BlogPosting
   <div class="wrapper flow prose">
     <h1>{{ title }}</h1>
 
-    {% if image %}
+    {% if poster %}
       <!-- image -->
-      {% image image, alt or "", credit, "eager", "feature" %}
+      {% image poster, alt or "", credit, "eager", "feature" %}
     {% endif %}
 
     <p class="meta | cluster gutter-xs-s">

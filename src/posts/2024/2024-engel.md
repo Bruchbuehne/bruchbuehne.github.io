@@ -6,7 +6,6 @@ discover:
 date: 2024-06-03
 author: Friedrich Dürrenmatt
 dates: "25., 26., 27., 28. Juni 2024"
-image: '/assets/images/gallery/2024-engel/engel-poster.jpg'
 poster: '/assets/images/gallery/2024-engel/engel-poster.jpg'
 alt: 'Poster'
 credit: Poster designt von Maruscha Winkler

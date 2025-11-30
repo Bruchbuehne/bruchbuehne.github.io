@@ -6,7 +6,6 @@ discover:
 date: 2025-01-19
 author: Eugène Ionesco
 dates: "7., 8., 10. und 11. Juli 2025 um 19:00"
-image: '/assets/images/gallery/2025-nashoerner/rhino-poster.png'
 poster: '/assets/images/gallery/2025-nashoerner/rhino-poster.png'
 alt: 'Poster von Die Nashörner'
 credit: Poster designt von Dominic Lupas
