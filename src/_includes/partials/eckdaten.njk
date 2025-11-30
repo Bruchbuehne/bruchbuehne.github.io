@@ -1,0 +1,40 @@
+{% if description or author or dates %}
+<section class="eckdaten">
+  <h2>Eckdaten</h2>
+  {% if description %}
+  <p>{{ description }}</p>
+  {% endif %}
+  <ul>
+    {% if author %}
+    <li><strong>Autor{% if author.includes('Serreau') %}in{% endif %}:</strong> {{ author }}</li>
+    {% endif %}
+    {% if dates %}
+    <li><strong>Termine:</strong> {{ dates }}</li>
+    {% endif %}
+  </ul>
+</section>
+
+{%- css "local" -%}
+.eckdaten {
+  margin-block-start: var(--space-m-l);
+}
+
+.eckdaten h2 {
+  margin-block-end: var(--space-s);
+}
+
+.eckdaten p {
+  margin-block-end: var(--space-s);
+}
+
+.eckdaten ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eckdaten li {
+  margin-block-end: var(--space-2xs);
+}
+{%- endcss -%}
+{% endif %}

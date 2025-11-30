@@ -1,0 +1,30 @@
+<section class="pdf-link mt-l-xl">
+  <h2>Programmheft</h2>
+  {% if brochure == true %}
+    {% set pdfPath = "/assets/programmhefte/" + page.fileSlug + "/programmheft.pdf" %}
+  {% else %}
+    {% set pdfPath = brochure %}
+  {% endif %}
+  <a href="{{ pdfPath }}" class="button" download>
+    {% svg "download" %}
+    Programmheft herunterladen (PDF)
+  </a>
+</section>
+
+{%- css "local" -%}
+.pdf-link {
+  margin-block-start: var(--space-l-xl);
+}
+
+.pdf-link .button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-block-start: var(--space-m);
+}
+
+.pdf-link svg {
+  width: 1.25em;
+  height: 1.25em;
+}
+{%- endcss -%}

@@ -2,6 +2,13 @@
 {% set showTags = showTags | default(true) %}
 
 <custom-card clickable>
+  {% if item.data.poster %}
+  <div slot="image">
+    <a href="{{ item.url | url }}">
+      {% image item.data.poster, item.data.alt or item.data.title, "", "eager" %}
+    </a>
+  </div>
+  {% endif %}
   <{{ headingLevel }} slot="headline" class="text-step-2">
     <a href="{{ item.url | url }}">{{ item.data.title }}</a>
   </{{ headingLevel }}>

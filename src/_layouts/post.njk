@@ -31,8 +31,23 @@ schema: BlogPosting
     </p>
 
     {{ content | safe }}
+
+    {% include 'partials/eckdaten.njk' %}
+
+    {% if cast or crew or aks %}
+      {% include 'partials/cast-crew.njk' %}
+    {% endif %}
+
+    {% if brochure %}
+      {% include 'partials/pdf-link.njk' %}
+    {% endif %}
+
     {% include 'partials/edit-on.njk' %}
   </div>
+
+  {% if gallery %}
+    {% include 'partials/gallery.njk' %}
+  {% endif %}
 
   <!--  h-card infos: https://indieweb.org/authorship -->
   <div hidden class="h-entry">

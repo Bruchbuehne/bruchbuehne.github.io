@@ -1,0 +1,85 @@
+<section class="cast-crew mt-l-xl">
+  {% if cast %}
+  <h2>Besetzung</h2>
+  <table class="cast-table">
+    <thead>
+      <tr>
+        <th>Rolle</th>
+        <th>Schauspieler*in</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for member in cast -%}
+      <tr>
+        <td>{{ member.role }}</td>
+        <td>{{ member.actor }}</td>
+      </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if crew %}
+  <h2>Team</h2>
+  <ul class="crew-list">
+    {%- for member in crew -%}
+    <li><strong>{{ member.role }}:</strong> {{ member.name }}</li>
+    {%- endfor -%}
+  </ul>
+  {% endif %}
+
+  {% if aks %}
+  <h2>AKs</h2>
+  <ul class="crew-list">
+    {%- for ak in aks -%}
+    <li><strong>{{ ak.name }}:</strong> {{ ak.members }}</li>
+    {%- endfor -%}
+  </ul>
+  {% endif %}
+</section>
+
+{%- css "local" -%}
+.cast-crew {
+  margin-block-start: var(--space-l-xl);
+}
+
+.cast-crew h2 {
+  margin-block-start: var(--space-l);
+}
+
+.cast-crew h2:first-child {
+  margin-block-start: 0;
+}
+
+.cast-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block-start: var(--space-m);
+}
+
+.cast-table th,
+.cast-table td {
+  padding: var(--space-xs) var(--space-s);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cast-table th {
+  font-weight: 700;
+  background-color: var(--color-bg-glare);
+}
+
+.cast-table tbody tr:hover {
+  background-color: var(--color-bg-glare);
+}
+
+.crew-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-m) 0 0 0;
+}
+
+.crew-list li {
+  margin-block-end: var(--space-2xs);
+}
+{%- endcss -%}

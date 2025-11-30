@@ -4,7 +4,9 @@ description: "Familie Hase wohnt in einer winzigen Wohnung und plötzlich gerät
 discover:
   description: "Familie Hase wohnt in einer winzigen Wohnung und plötzlich gerät ihr Leben aus den Fugen und die Wohnung füllt sich zum Bersten."
 date: 2025-01-19
-image: '/assets/images/gallery/2025-hase/hase-poster.jpg'
+author: Coline Serreau
+dates: "19., 20., 21., 23. und 24. Januar 2025"
+poster: '/assets/images/gallery/2025-hase/hase-poster.jpg'
 alt: 'Poster von Hase Hase'
 credit: Poster designt von Nicolai Plenk, Sarah Taras und Sarina Vitillo
 gallery:
@@ -15,40 +17,41 @@ gallery:
   - image: ./src/assets/images/gallery/2025-hase/hase-5.jpg
   - image: ./src/assets/images/gallery/2025-hase/hase-6.jpg
   - image: ./src/assets/images/gallery/2025-hase/hase-7.jpg
+cast:
+  - role: Mama
+    actor: Anka Doese, Ilea Rahn, Susanne König
+  - role: Papa
+    actor: Kilian Niemann
+  - role: Hase
+    actor: Jakob Sappler
+  - role: Babette/Elisabeth
+    actor: Sarina Vitillo
+  - role: Jeannot
+    actor: Jan Riebe
+  - role: Sarah
+    actor: Marie
+  - role: Lucie
+    actor: Jule Lenz
+  - role: Gérard
+    actor: Gabriel Jann
+  - role: Frau Duperri
+    actor: Ronja Pröllochs
+  - role: Hervé (Unteroffizier)
+    actor: Eleni Brüggemann
+  - role: Ministerpräsident
+    actor: Regina Gejer
+  - role: Nachrichtensprecher
+    actor: Miriam Mauthe
+  - role: Kleiner Soldat
+    actor: Maruscha Winkler
+  - role: 1. Polizist
+    actor: Hannah van Sanvliet
+  - role: 2. Polizist
+    actor: Marie Haeßler
+  - role: Mann in schwarz
+    actor: Kate Zhevelyuk
+crew:
+  - role: Technik
+    name: Rian Knittel, Nicolai Plenk
+brochure: false
 ---
-
-## Eckdaten
-<ul>
-<li>Autorin: Coline Serreau</li>
-<li>Termine: 19., 20., 21., 23. und 24. Januar 2025</li>
-</ul>
-
-## Cast & Crew
-<ul>
-<li>Anka Doese—Mama</li>
-<li>Ilea Rahn—Mama</li>
-<li>Susanne König—Mama</li>
-<li>Kilian Niemann—Papa</li>
-<li>Jakob Sappler—Hase</li>
-<li>Sarina Vitillo—Babette/Elisabeth</li>
-<li>Jan Riebe—Jeannot</li>
-<li>Sarah Marie</li>
-<li>Jule Lenz—Lucie</li>
-<li>Gabriel Jann—Gérard</li>
-<li>Ronja Pröllochs—Frau Duperri</li>
-<li>Eleni Brüggemann—Hervé (Unteroffizier)</li>
-<li>Regina Gejer—Ministerpräsident</li>
-<li>Miriam Mauthe—Nachrichtensprecher</li>
-<li>Maruscha Winkler—Kleiner Soldat</li>
-<li>Hannah van Sanvliet—1. Polizist</li>
-<li>Marie Haeßler—2. Polizist</li>
-<li>Kate Zhevelyuk—Mann in schwarz</li>
-<li>Rian Knittel—Technik</li>
-<li>Nicolai Plenk—Technik</li>
-</ul>
-
-<ul class="gallery" role="list" style="padding: 0;">
-  {%- for item in gallery -%}
-    <li>{% image item.image, item.alt %}</li>
-  {%- endfor -%}
-</ul>

@@ -4,7 +4,10 @@ description: "Alle verwandeln sich in Nashörner, nur Behringer nicht."
 discover:
   description: "Wahlweise ein oder zwei Hörner"
 date: 2025-01-19
+author: Eugène Ionesco
+dates: "7., 8., 10. und 11. Juli 2025 um 19:00"
 image: '/assets/images/gallery/2025-nashoerner/rhino-poster.png'
+poster: '/assets/images/gallery/2025-nashoerner/rhino-poster.png'
 alt: 'Poster von Die Nashörner'
 credit: Poster designt von Dominic Lupas
 gallery:
@@ -15,6 +18,7 @@ gallery:
   - image: ./src/assets/images/gallery/2025-nashoerner/rhino-5.jpg
   - image: ./src/assets/images/gallery/2025-nashoerner/rhino-6.jpg
   - image: ./src/assets/images/gallery/2025-nashoerner/rhino-7.jpg
+brochure: false
 ---
 
  {% if reservierung.verkauf %}
@@ -27,15 +31,3 @@ gallery:
     </div>
   </article>
   {% endif %}
-
-## Eckdaten
-<ul>
-<li>Autor: Eugène Ionesco</li>
-<li>Termine: 7., 8., 10. und 11. Juli 2025 um 19:00</li>
-</ul>
-
-<ul class="gallery" role="list" style="padding: 0;">
-  {%- for item in gallery -%}
-    <li>{% image item.image, item.alt %}</li>
-  {%- endfor -%}
-</ul>
