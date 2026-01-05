@@ -42,6 +42,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/files");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/assets/**/*.{jpg,jpeg,png,gif,svg,pdf}");
 
   // Collections
@@ -61,42 +62,37 @@ module.exports = function(eleventyConfig) {
     const grouped = {};
 
     productions.forEach(prod => {
-      // Extract semester from date if not provided
-      let semester = prod.data.semester;
-      if (!semester) {
-        const date = new Date(prod.data.date);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1; // 0-indexed
-
-        // In Germany: WS (Oct-Mar), SS (Apr-Sep)
-        if (month >= 10 || month <= 3) {
-          // Winter semester spans two years, use the starting year
-          const semesterYear = month >= 10 ? year : year - 1;
-          semester = `WS ${semesterYear}`;
-        } else {
-          semester = `SS ${year}`;
+      const semester = prod.data.semester;
+      if (semester) {
+        if (!grouped[semester]) {
+          grouped[semester] = [];
         }
+        grouped[semester].push(prod);
       }
-
-      if (!grouped[semester]) {
-        grouped[semester] = [];
-      }
-      grouped[semester].push(prod);
     });
 
-    // Sort semesters (newest first, WS before SS in same year)
+    // Sort semesters (newest first)
+    // Format: "SoSe 24", "WiSe 24/25"
     return Object.keys(grouped)
       .sort((a, b) => {
-        const parseKey = (key) => {
-          const [type, year] = key.split(' ');
-          return { year: parseInt(year), isWinter: type === 'WS' };
+        const parseSemester = (sem) => {
+          // Extract year and type
+          if (sem.startsWith('WiSe')) {
+            // WiSe 24/25 -> year 24, isWinter: true
+            const yearMatch = sem.match(/WiSe (\d+)/);
+            const year = yearMatch ? parseInt(yearMatch[1]) : 0;
+            return year * 2 + 1; // Winter semester gets +1
+          } else if (sem.startsWith('SoSe')) {
+            // SoSe 24 -> year 24, isWinter: false
+            const yearMatch = sem.match(/SoSe (\d+)/);
+            const year = yearMatch ? parseInt(yearMatch[1]) : 0;
+            return year * 2; // Summer semester
+          }
+          return 0;
         };
-        const aData = parseKey(a);
-        const bData = parseKey(b);
 
-        if (aData.year !== bData.year) return bData.year - aData.year;
-        // Within same year, WS comes after SS (chronologically)
-        return aData.isWinter ? 1 : -1;
+        // Sort descending (newest first)
+        return parseSemester(b) - parseSemester(a);
       })
       .map(semester => ({
         semester,
