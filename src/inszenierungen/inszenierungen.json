@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/production.njk",
+  "tags": ["inszenierung"],
+  "permalink": "/inszenierungen/{{ short or title | slugify }}/"
+}
