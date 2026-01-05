@@ -1,4 +1,6 @@
-/* Font Face Declarations - IBM Plex Serif */
+/* Font Face Declarations */
+
+/* IBM Plex Serif */
 
 @font-face {
   font-family: 'IBM Plex Serif';
@@ -40,10 +42,44 @@
   font-display: swap;
 }
 
-/* Base Styles */
+/* IBM Plex Mono */
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base Styles with Texture & Refined Typography */
+
+/* Imports from variables.css are assumed */
 
 html {
   font-size: 16px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -52,63 +88,95 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.6;
+  min-height: 100%;
+  position: relative;
+  counter-reset: card-counter section-counter fig-counter;
+}
+
+/* Texture via pseudo-element */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--texture-noise);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
 }
 
 /* Typography */
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   line-height: 1.2;
   margin-bottom: var(--space-sm);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
 }
 
 h1 {
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-md);
+  letter-spacing: -0.03em;
 }
 
 h2 {
-  font-size: var(--text-4xl);
-  font-weight: var(--font-weight-semibold);
-}
-
-h3 {
   font-size: var(--text-3xl);
 }
 
-h4 {
+h3 {
   font-size: var(--text-2xl);
 }
 
-h5 {
+h4 {
   font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+h5 {
+  font-size: var(--text-base);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 h6 {
-  font-size: var(--text-lg);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 p {
   margin-bottom: var(--space-sm);
+  max-width: 65ch;
+  font-size: var(--text-base);
 }
 
-/* Links */
+/* Links - Updated: Black by default, Orange on hover */
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  border-bottom: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 a:focus-visible {
-  outline: var(--border-width) solid var(--color-accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Emphasis */
@@ -119,75 +187,154 @@ strong, b {
 
 em, i {
   font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--color-text);
 }
 
 /* Code */
 
 code, pre {
-  font-family: monospace;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  padding: 0.125rem 0.25rem;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
+  color: var(--color-text);
 }
 
 pre {
   padding: var(--space-sm);
   overflow-x: auto;
+  margin-bottom: var(--space-sm);
 }
 
-/* Buttons - Brutalist blocky style */
+/* Buttons - Unified "Keycap" Style */
 
 .btn {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-md);
-  font-family: var(--font-serif);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-base);
-  color: var(--color-bg);
-  background-color: var(--color-accent);
-  border: var(--border-width) var(--border-style) var(--color-accent);
-  cursor: pointer;
-  transition: transform var(--transition-fast),
-              background-color var(--transition-fast),
-              border-color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6em 1.2em;
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border-strong);
+  border-radius: 0;
+
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  position: relative;
+
+  /* Tactile shadow with inset border */
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1), inset 0 0 0 1px var(--color-bg);
 }
 
 .btn:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-surface);
   transform: translateY(-2px);
-  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12), inset 0 0 0 1px var(--color-bg);
 }
 
 .btn:active {
   transform: translateY(0);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--color-bg);
 }
 
+/* Primary Button - Solid Orange */
+.btn--primary {
+  background-color: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+/* Secondary Button - Outline (same as default but explicit) */
 .btn--secondary {
   background-color: transparent;
-  color: var(--color-text);
-  border-color: var(--color-border);
 }
 
-.btn--secondary:hover {
-  background-color: var(--color-text);
-  color: var(--color-bg);
-  border-color: var(--color-text);
-}
-
-/* Focus States */
-
-:focus-visible {
-  outline: var(--border-width) solid var(--color-accent);
-  outline-offset: 2px;
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
 }
 
 /* Selection */
 
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-bg);
+  color: #fff;
+}
+
+/* Technical Label Utilities */
+
+.label-technical {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border);
+  padding: 2px 6px;
+  background: var(--color-surface);
+  display: inline-block;
+}
+
+/* Stencil-style text - like military crates */
+.text-stencil {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/* Section header with line */
+.section-header {
+  position: relative;
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* Caption style - like figure captions in manuals */
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin-top: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.caption::before {
+  content: '▸ ';
+  color: var(--color-accent);
 }

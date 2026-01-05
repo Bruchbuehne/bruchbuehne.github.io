@@ -7,6 +7,7 @@
   gap: var(--gap);
   grid-auto-flow: dense;
   padding: var(--space-lg) 0;
+  /* Removed the left border to keep the grid cleaner */
 }
 
 /* Responsive Breakpoints */
@@ -41,18 +42,57 @@
 .homepage-header {
   text-align: center;
   padding: var(--space-xl) 0 var(--space-lg);
-  border-bottom: var(--border-width) var(--border-style) var(--color-border);
   margin-bottom: var(--space-lg);
+  background-color: transparent; /* Let texture show through */
+  position: relative;
+}
+
+/* Technical divider with measurement marks */
+.homepage-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px; /* Increased height for ticks */
+  border-bottom: 1px solid var(--color-border);
+  background: 
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px) 0 100% / 20px 4px repeat-x, /* Major ticks */
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px) 0 100% / 4px 2px repeat-x;  /* Minor ticks */
+}
+
+/* Center Registration Mark */
+.homepage-header::before {
+  content: '';
+  position: absolute;
+  bottom: -4px; /* Halfway on the line */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-accent);
+  border-radius: 50%; /* Circle target */
+  z-index: 2;
+  box-shadow: 0 0 0 2px var(--color-bg); /* Clear space around it */
 }
 
 .homepage-header__title {
+  font-family: var(--font-serif);
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-sm);
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  /* Removed uppercase */
 }
 
 .homepage-header__subtitle {
-  font-size: var(--text-2xl);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
   color: var(--color-muted);
-  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 auto;
 }

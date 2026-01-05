@@ -16,7 +16,8 @@
 }
 
 [data-theme="dark"] .site-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: none; /* Flatten in dark mode too for consistent brutalism */
+  border-bottom-color: var(--color-border);
 }
 
 /* Ensure good contrast for form elements in dark mode */
@@ -37,4 +38,24 @@
 [data-theme="dark"] :focus-visible {
   outline-color: var(--color-accent);
   outline-width: var(--border-width);
+}
+
+/* Theme Toggle Icon Logic */
+
+/* Default (Light Mode): Show Moon, Hide Sun */
+.theme-toggle__icon--light {
+  display: none;
+}
+
+.theme-toggle__icon--dark {
+  display: block;
+}
+
+/* Dark Mode: Show Sun, Hide Moon */
+[data-theme="dark"] .theme-toggle__icon--light {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle__icon--dark {
+  display: none;
 }
