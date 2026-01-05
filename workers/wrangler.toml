@@ -1,0 +1,16 @@
+# Cloudflare Workers configuration for Bruchbühne Reservations
+# Simplified KV-based system (no D1, no Google Sheets sync)
+
+name = "bruchbuehne-reservations"
+main = "kv-reservation-worker.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespace binding
+[[kv_namespaces]]
+binding = "RESERVATIONS"
+id = "b257c62162814e89a208db6786c912e9"
+
+# Secrets (set via: wrangler secret put SECRET_NAME)
+# Required:
+#   ADMIN_TOKEN - for admin API access
+#   RESEND_API_KEY - for sending confirmation emails via Resend
