@@ -1,0 +1,130 @@
+/* Layout Utilities */
+
+/* Container */
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+}
+
+/* Main Content Area */
+
+.main-content {
+  min-height: calc(100vh - 200px); /* Account for header/footer */
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-xl);
+}
+
+/* Page Wrapper */
+
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Spacing Utilities */
+
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+
+/* Flex Utilities */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-sm {
+  gap: var(--gap-sm);
+}
+
+.gap-md {
+  gap: var(--gap);
+}
+
+/* Grid Utilities */
+
+.grid {
+  display: grid;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Text Utilities */
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Brutalist Box */
+
+.brutalist-box {
+  border: var(--border-width) var(--border-style) var(--color-border);
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+}
+
+.brutalist-box--accent {
+  border-color: var(--color-accent);
+}
+
+/* Divider */
+
+.divider {
+  width: 100%;
+  height: var(--border-width);
+  background-color: var(--color-border);
+  margin: var(--space-lg) 0;
+}

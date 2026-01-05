@@ -1,0 +1,88 @@
+/* Design System - Theatre Brutalist Aesthetic */
+
+:root {
+  /* Colors - Light Mode (Theatre Palette) */
+  --color-bg: #f5f3ef;           /* Cream background */
+  --color-text: #1a1a1a;         /* Near black text */
+  --color-accent: #8b0000;       /* Deep red (curtain red) */
+  --color-accent-hover: #5a0000; /* Darker red for interactions */
+  --color-surface: #ffffff;      /* White for cards/surfaces */
+  --color-border: #1a1a1a;       /* Black borders */
+  --color-muted: #6a6a6a;        /* Muted text */
+
+  /* Typography */
+  --font-serif: 'IBM Plex Serif', serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+
+  /* Spacing */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 1rem;      /* 16px */
+  --space-md: 2rem;      /* 32px */
+  --space-lg: 3rem;      /* 48px */
+  --space-xl: 5rem;      /* 80px */
+  --space-2xl: 8rem;     /* 128px */
+
+  /* Layout */
+  --content-width: 1400px;
+  --gap: 2rem;
+  --gap-sm: 1rem;
+
+  /* Borders - Brutalist thick borders */
+  --border-width: 3px;
+  --border-style: solid;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Dark Mode - Inverted theatre palette */
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;           /* Near black background */
+  --color-text: #f5f3ef;         /* Cream text */
+  --color-accent: #d32f2f;       /* Brighter red for visibility */
+  --color-accent-hover: #f44336; /* Even brighter on hover */
+  --color-surface: #2a2a2a;      /* Dark gray for cards */
+  --color-border: #f5f3ef;       /* Cream borders for contrast */
+  --color-muted: #b0b0b0;        /* Lighter muted text */
+}
+
+/* System Preference Dark Mode (Default if no user preference) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #1a1a1a;
+    --color-text: #f5f3ef;
+    --color-accent: #d32f2f;
+    --color-accent-hover: #f44336;
+    --color-surface: #2a2a2a;
+    --color-border: #f5f3ef;
+    --color-muted: #b0b0b0;
+  }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+/* Disable transitions on theme change to prevent flash */
+[data-theme-transitioning] * {
+  transition: none !important;
+}

@@ -1,0 +1,40 @@
+/* Dark Mode Specific Overrides */
+
+/* Adjust images in dark mode for better visibility */
+[data-theme="dark"] img {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .production-card__image,
+[data-theme="dark"] .production-hero__image {
+  opacity: 1;
+}
+
+/* Enhanced contrast for important elements in dark mode */
+[data-theme="dark"] .eckdaten {
+  background-color: var(--color-bg);
+}
+
+[data-theme="dark"] .site-header {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure good contrast for form elements in dark mode */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-muted);
+}
+
+/* Better focus visibility in dark mode */
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--color-accent);
+  outline-width: var(--border-width);
+}
