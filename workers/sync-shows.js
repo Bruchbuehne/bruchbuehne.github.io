@@ -25,15 +25,15 @@ function getKVNamespaceId() {
 function kvPut(shows, useRemote = false) {
     const namespaceId = getKVNamespaceId();
     const json = JSON.stringify(shows, null, 2);
-    const tmpFile = '/tmp/shows-sync.json';
+    const tmpFile = './shows-sync-tmp.json';
 
     writeFileSync(tmpFile, json);
 
-    const remoteFlag = useRemote ? '--remote' : '';
+    const remoteFlag = ''; // Production is default in Wrangler v3
 
     try {
         execSync(
-            `wrangler kv key put "${KV_KEY}" --path="${tmpFile}" --namespace-id="${namespaceId}" ${remoteFlag}`,
+            `wrangler kv key put "${KV_KEY}" --path="${tmpFile}" --namespace-id="${namespaceId}"`,
             { encoding: 'utf-8', stdio: 'inherit' }
         );
         unlinkSync(tmpFile);
@@ -89,7 +89,7 @@ function syncShows() {
                     title: showGroup.title,
                     date: showDate.date,
                     dateFormatted: formatGermanDate(showDate.date),
-                    location: 'Bruchbühne Tübingen', // Default or add to yaml if needed
+                    location: showDate.location || showGroup.location || 'Bruchbühne Tübingen',
                     capacity: showDate.capacity,
                     reserved: 0 // Warning: This resets reservations! Logic needs to preserve existing.
                 });
@@ -97,13 +97,11 @@ function syncShows() {
         });
 
         // FETCH EXISTING RESERVATIONS TO PRESERVE THEM
-        // This is critical - we don't want to wipe 'reserved' counts on every sync.
         const namespaceId = getKVNamespaceId();
-        const remoteFlag = useRemote ? '--remote' : '';
         let existingShows = [];
         try {
             const result = execSync(
-                `wrangler kv key get "${KV_KEY}" --namespace-id="${namespaceId}" ${remoteFlag}`,
+                `wrangler kv key get "${KV_KEY}" --namespace-id="${namespaceId}"`,
                 { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
             );
             existingShows = JSON.parse(result);

@@ -1,8 +1,7 @@
 /**
  * Bruchbühne Reservations - Simplified Cloudflare KV Worker
  * Features:
- * - Cloudflare KV storage (simpler than D1)
- * - MailChannels email confirmations (FREE!)
+ * - Cloudflare KV storage
  * - Real-time availability
  * - Admin dashboard
  */
@@ -937,8 +936,8 @@ function handleAdminDashboard() {
       <div class="auth-box">
         <h2 style="font-family: var(--font-mono); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Admin Access</h2>
         <div id="auth-error" class="error"></div>
-        <input type="password" id="admin-token" placeholder="ADMIN TOKEN" autofocus>
-        <button onclick="login()" class="btn-login">Unlock Terminal</button>
+        <input type="password" id="admin-token" placeholder="ADMIN PASSWORT" autofocus>
+        <button onclick="login()" class="btn-login">Anmelden</button>
       </div>
     </div>
 
@@ -949,31 +948,31 @@ function handleAdminDashboard() {
           <h1>Bruchbühne Admin</h1>
           <p class="subtitle">System Dashboard</p>
         </div>
-        <button class="logout-btn" onclick="logout()">Disconnect</button>
+        <button class="logout-btn" onclick="logout()">Abmelden</button>
       </header>
 
       <div class="stats" id="stats">
         <div class="stat-card">
-          <h3>Total Reservations</h3>
+          <h3>Gesamtreservierungen</h3>
           <div class="number" id="total-reservations">-</div>
         </div>
         <div class="stat-card">
-          <h3>Tickets Sold</h3>
+          <h3>Verkaufte Tickets</h3>
           <div class="number" id="total-tickets">-</div>
         </div>
         <div class="stat-card">
-          <h3>Active Shows</h3>
+          <h3>Aktive Vorstellungen</h3>
           <div class="number" id="active-shows">-</div>
         </div>
         <div class="stat-card">
-          <h3>Utilization</h3>
+          <h3>Auslastung</h3>
           <div class="number" id="utilization">-</div>
         </div>
       </div>
 
       <div class="section">
         <h2>
-          <span>Reservations Log</span>
+          <span>Reservierungen</span>
           <span style="font-size: 0.75rem; color: var(--color-muted);" id="res-count"></span>
         </h2>
         <div id="reservations-container" class="table-wrapper">
@@ -1001,7 +1000,7 @@ function handleAdminDashboard() {
     function login() {
       token = document.getElementById('admin-token').value;
       if (!token) {
-        showError('ACCESS DENIED: Token required');
+        showError('ZUGRIFF VERWEIGERT: Passwort erforderlich');
         return;
       }
       localStorage.setItem('adminToken', token);
@@ -1084,14 +1083,14 @@ function handleAdminDashboard() {
       document.getElementById('total-tickets').textContent = totalTickets;
       document.getElementById('active-shows').textContent = futureShows.length;
       document.getElementById('utilization').textContent = utilization + '%';
-      document.getElementById('res-count').textContent = \`[\${reservations.length} ENTRIES]\`;
+      document.getElementById('res-count').textContent = \`[\${reservations.length} RESERVIERUNGEN]\`;
     }
 
     function renderReservations(reservations) {
       const container = document.getElementById('reservations-container');
 
       if (reservations.length === 0) {
-        container.innerHTML = '<div class="empty-state">No active reservations found in database.</div>';
+        container.innerHTML = '<div class="empty-state">Keine Reservierungen gefunden.</div>';
         return;
       }
 
@@ -1165,11 +1164,11 @@ function handleAdminDashboard() {
         if (isPast) {
           statusBadge = '<span class="badge" style="color:var(--color-muted); border-color:var(--color-muted)">PAST</span>';
         } else if (isFull) {
-          statusBadge = '<span class="badge danger">SOLD OUT</span>';
+          statusBadge = '<span class="badge danger">AUSVERKAUFT</span>';
         } else if (percentage > 80) {
-          statusBadge = '<span class="badge warning">FILLING</span>';
+          statusBadge = '<span class="badge warning">FÜLLT SICH</span>';
         } else {
-          statusBadge = '<span class="badge success">OPEN</span>';
+          statusBadge = '<span class="badge success">FREI</span>';
         }
 
         showRows += '<tr>';
@@ -1181,8 +1180,8 @@ function handleAdminDashboard() {
       });
 
       const html = '<table><thead><tr>' +
-        '<th>Title</th><th>Date</th>' +
-        '<th>Cap / Res</th><th>Status</th>' +
+        '<th>Titel</th><th>Datum</th>' +
+        '<th>Verf / Res</th><th>Status</th>' +
         '</tr></thead><tbody>' + showRows + '</tbody></table>';
         
       container.innerHTML = html;

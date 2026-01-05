@@ -15,7 +15,7 @@
   color: var(--color-text);
   background-color: var(--color-surface);
   border: 2px solid var(--color-border-strong);
-  border-radius: 2px; /* Slight rounding for keycap feel */
+  border-radius: 0; /* Sharp corners for brutalist feel */
 
   cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.1s ease, background-color var(--transition-fast);
