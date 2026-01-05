@@ -1,0 +1,36 @@
+<section class="gallery">
+  <h2>Eindrücke</h2>
+  <div class="gallery__grid">
+    {% for item in gallery %}
+      {% set imageSrc = item.image or item %}
+      <button class="gallery__item" data-gallery-item="{{ loop.index0 }}" aria-label="View image {{ loop.index }}">
+        <img src="{{ imageSrc }}"
+             alt="Produktionsfoto {{ loop.index }}"
+             loading="lazy"
+             class="gallery__image">
+      </button>
+    {% endfor %}
+  </div>
+
+  {# Lightbox #}
+  <div class="gallery__lightbox" data-gallery-lightbox hidden role="dialog" aria-modal="true">
+    <button class="gallery__close" data-gallery-close aria-label="Close gallery">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="gallery__prev" data-gallery-prev aria-label="Previous image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="gallery__next" data-gallery-next aria-label="Next image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <img src="" alt="" class="gallery__lightbox-image" data-gallery-lightbox-image>
+    <p class="gallery__counter" data-gallery-counter aria-live="polite"></p>
+  </div>
+</section>
