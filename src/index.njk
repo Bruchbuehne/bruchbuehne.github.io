@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+
+<div class="container">
+  <header class="homepage-header">
+    <h1 class="homepage-header__title">{{ site.name }}</h1>
+    <p class="homepage-header__subtitle">Das haben wir schon aufgeführt</p>
+    {% if site.reservations %}
+      <div class="mt-md">
+        <a href="/reservierungen/" class="btn btn--primary">Reservieren</a>
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="masonry-grid">
+    {% for production in collections.inszenierungen %}
+      {% set isLatest = loop.first %}
+      {% include "partials/production-card.njk" %}
+    {% endfor %}
+  </div>
+</div>

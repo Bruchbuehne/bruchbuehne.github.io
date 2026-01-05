@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+title: Inszenierungen
+permalink: /inszenierungen/
+---
+
+<div class="container page-wrapper">
+  <header class="page-header">
+    <h1 class="page-header__title">Inszenierungen</h1>
+    <p class="page-header__subtitle">Unsere Produktionen nach Semester</p>
+  </header>
+
+  {% for group in collections.inszenierungBySemester %}
+    <section class="semester-group mb-xl">
+      <h2 class="semester-group__title text-3xl font-bold mb-md">{{ group.semester }}</h2>
+
+      <div class="production-list">
+        {% for production in group.productions %}
+          <article class="production-list__item brutalist-box mb-md">
+            <a href="{{ production.url }}" class="production-list__link">
+              <div class="production-list__content">
+                <p class="production-list__author text-sm text-muted">{{ production.data.author }}</p>
+                <h3 class="production-list__title text-2xl font-semibold">{{ production.data.title }}</h3>
+                {% if production.data.dates %}
+                  <p class="production-list__dates text-sm text-muted">{{ production.data.dates }}</p>
+                {% endif %}
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>
+
+<style>
+  .semester-group {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .semester-group__title {
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: var(--border-width) var(--border-style) var(--color-accent);
+  }
+
+  .production-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .production-list__item {
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .production-list__item:hover {
+    transform: translateX(4px);
+    border-color: var(--color-accent);
+  }
+
+  .production-list__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .production-list__author {
+    font-style: italic;
+    margin-bottom: var(--space-xs);
+  }
+
+  .production-list__title {
+    margin-bottom: var(--space-xs);
+  }
+
+  .production-list__dates {
+    font-weight: var(--font-weight-medium);
+  }
+</style>
