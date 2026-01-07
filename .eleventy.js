@@ -1,7 +1,7 @@
 const Image = require("@11ty/eleventy-img");
 
 // Image shortcode for responsive images
-async function imageShortcode(src, alt, sizes = "100vw") {
+async function imageShortcode(src, alt, sizes = "100vw", className = "") {
   // Handle both absolute and relative paths
   let imagePath = src;
   if (src.startsWith('./')) {
@@ -9,12 +9,12 @@ async function imageShortcode(src, alt, sizes = "100vw") {
   } else if (!src.startsWith('http') && !src.startsWith('/')) {
     imagePath = `./src/${src}`;
   } else if (src.startsWith('/')) {
-    imagePath = `.${src}`;
+    imagePath = `./src${src}`;
   }
 
   let metadata = await Image(imagePath, {
     widths: [300, 600, 900, 1200],
-    formats: ["webp", "jpeg"],
+    formats: ["avif", "webp", "jpeg"],
     outputDir: "./_site/images/optimized/",
     urlPath: "/images/optimized/",
     sharpOptions: {
@@ -27,14 +27,40 @@ async function imageShortcode(src, alt, sizes = "100vw") {
     sizes,
     loading: "lazy",
     decoding: "async",
+    class: className
   };
 
   return Image.generateHTML(metadata, imageAttributes);
 }
 
+// Shortcode to get just the URL of a large optimized image (for Lightbox/Open Graph)
+async function imageUrlShortcode(src) {
+  let imagePath = src;
+  if (src.startsWith('./')) {
+    imagePath = src;
+  } else if (!src.startsWith('http') && !src.startsWith('/')) {
+    imagePath = `./src/${src}`;
+  } else if (src.startsWith('/')) {
+    imagePath = `./src${src}`;
+  }
+
+  let metadata = await Image(imagePath, {
+    widths: [1200],
+    formats: ["jpeg"],
+    outputDir: "./_site/images/optimized/",
+    urlPath: "/images/optimized/",
+    sharpOptions: {
+      animated: false
+    }
+  });
+
+  return metadata.jpeg[0].url;
+}
+
 module.exports = function(eleventyConfig) {
   // Add image shortcode
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addNunjucksAsyncShortcode("imageUrl", imageUrlShortcode);
 
   // Passthrough copies
   eleventyConfig.addPassthroughCopy("src/assets/css");
