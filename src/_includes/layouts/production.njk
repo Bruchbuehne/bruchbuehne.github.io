@@ -9,7 +9,7 @@ layout: layouts/base.njk
     <section class="production-header-grid">
       {# Col 1: Poster #}
       <div class="production-poster-wrapper">
-        <img src="{{ poster }}" alt="{{ title }} Poster" class="production-poster">
+        {% image poster, title + " Poster", "(min-width: 1024px) 350px, 100vw", "production-poster" %}
         {% if credit %}
           <p class="production-hero__credit">{{ credit }}</p>
         {% endif %}

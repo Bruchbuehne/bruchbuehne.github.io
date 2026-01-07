@@ -25,6 +25,9 @@ permalink: /inszenierungen/
                   <p class="production-list__dates text-sm text-muted">{{ production.data.dates }}</p>
                 {% endif %}
               </div>
+              <div class="production-list__image-wrapper">
+                {% image production.data.poster, production.data.title ~ " Poster", "(min-width: 768px) 150px, 100px", "production-list__image" %}
+              </div>
             </a>
           </article>
         {% endfor %}
@@ -61,9 +64,40 @@ permalink: /inszenierungen/
   }
 
   .production-list__link {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
     text-decoration: none;
     color: inherit;
+  }
+
+  .production-list__content {
+    flex: 1;
+  }
+
+  .production-list__image-wrapper {
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .production-list__image-wrapper {
+      width: 120px;
+    }
+  }
+
+  .production-list__image {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+    display: block;
+  }
+
+  /* Ensure picture tag behaves correctly */
+  .production-list__image-wrapper picture {
+    display: block;
+    width: 100%;
   }
 
   .production-list__author {

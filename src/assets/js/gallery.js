@@ -37,8 +37,9 @@ class Gallery {
   }
 
   updateLightbox() {
-    const img = this.images[this.currentIndex].querySelector('img');
-    this.lightboxImage.src = img.src;
+    const item = this.images[this.currentIndex];
+    const img = item.querySelector('img');
+    this.lightboxImage.src = item.dataset.largeSrc || img.src;
     this.lightboxImage.alt = img.alt;
     this.counter.textContent = `${this.currentIndex + 1} / ${this.images.length}`;
   }
