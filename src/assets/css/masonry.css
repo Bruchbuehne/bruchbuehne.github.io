@@ -1,0 +1,73 @@
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--gap);
+  grid-auto-flow: dense;
+  padding: var(--space-lg) 0;
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1201px) {
+  .masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.homepage-header {
+  padding: var(--space-lg) var(--space-md);
+  margin-bottom: var(--space-xl);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  position: relative;
+  box-shadow: 4px 4px 0 var(--color-border);
+}
+
+.homepage-header::before {
+  content: '+';
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-border);
+  font-size: 1.2rem;
+}
+
+.homepage-header__title {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.homepage-header__subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  display: inline-block;
+  min-width: 200px;
+}
+
+.homepage-header::after {
+  content: 'PROJ. BRUCHBUEHNE';
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-muted);
+}

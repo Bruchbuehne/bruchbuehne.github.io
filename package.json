@@ -1,0 +1,14 @@
+{
+  "name": "bruchbuehne-website",
+  "version": "1.0.0",
+  "description": "Student theatre group website",
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^3.1.0"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "2026-01-26-19:00",
+    "title": "Bruchstücke",
+    "date": "2026-01-26 19:00:00",
+    "dateFormatted": "Montag, 26. Januar 2026 um 19:00",
+    "location": "Brechtbau Theater",
+    "capacity": 60,
+    "reserved": 0
+  },
+  {
+    "id": "2026-01-28-19:00",
+    "title": "Bruchstücke",
+    "date": "2026-01-28 19:00:00",
+    "dateFormatted": "Mittwoch, 28. Januar 2026 um 19:00",
+    "location": "Brechtbau Theater",
+    "capacity": 60,
+    "reserved": 0
+  },
+  {
+    "id": "2026-01-29-19:00",
+    "title": "Bruchstücke",
+    "date": "2026-01-29 19:00:00",
+    "dateFormatted": "Donnerstag, 29. Januar 2026 um 19:00",
+    "location": "Brechtbau Theater",
+    "capacity": 60,
+    "reserved": 0
+  },
+  {
+    "id": "2026-01-30-19:00",
+    "title": "Bruchstücke",
+    "date": "2026-01-30 19:00:00",
+    "dateFormatted": "Freitag, 30. Januar 2026 um 19:00",
+    "location": "Brechtbau Theater",
+    "capacity": 60,
+    "reserved": 0
+  }
+]

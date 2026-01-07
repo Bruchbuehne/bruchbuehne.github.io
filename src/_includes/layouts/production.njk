@@ -1,0 +1,136 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="container">
+  <article class="production">
+
+    {# Area 1: Header Grid (Poster + Data) #}
+    <section class="production-header-grid">
+      {# Col 1: Poster #}
+      <div class="production-poster-wrapper">
+        {% image poster, title + " Poster", "(min-width: 1024px) 350px, 100vw", "production-poster" %}
+        {% if credit %}
+          <p class="production-hero__credit">{{ credit }}</p>
+        {% endif %}
+      </div>
+
+      {# Col 2: Info & Eckdaten #}
+      <div class="production-main-info">
+        <div class="production-titles">
+          <h1 class="production-title">{{ title }}</h1>
+          {% if reservations %}
+            <div class="mt-sm">
+              <a href="/reservierungen/?show={{ title | urlencode }}" class="btn btn--secondary">Reservieren</a>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="eckdaten">
+          <!-- <h2 class="eckdaten__title">Daten</h2> -->
+          {% if author %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Autor</span>
+              <span class="eckdaten__value">{{ author }}</span>
+            </div>
+          {% endif %}
+          {% if venue %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Ort</span>
+              <span class="eckdaten__value">{{ venue }}</span>
+            </div>
+          {% endif %}
+          {% if semester %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Semester</span>
+              <span class="eckdaten__value">{{ semester }}</span>
+            </div>
+          {% endif %}
+          {% if dates %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Spielzeit</span>
+              <span class="eckdaten__value">{{ dates }}</span>
+            </div>
+          {% endif %}
+          {% if blurb %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Inhalt</span>
+              <span class="eckdaten__value">{{ blurb }}</span>
+            </div>
+          {% endif %}
+          
+          {# Brochure Download in Eckdaten #}
+          {% if programmheft %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Material</span>
+              <span class="eckdaten__value">
+                <a href="/assets/{{ short }}/programmheft-{{ programmheft }}.pdf" download class="text-accent hover:underline">
+                  Programmheft (PDF)
+                </a>
+              </span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    {# Area 2: Gallery #}
+    {% if gallery and gallery.length %}
+      <section class="production-gallery-section">
+        {% include "partials/gallery.njk" %}
+      </section>
+    {% endif %}
+
+    {# Area 3: Cast & Crew #}
+    {% if (cast and cast.length) or (crew and crew.length) %}
+      <section class="production-team-section">
+        <div class="grid-2">
+          
+          {% if cast and cast.length %}
+            <div class="cast-wrapper">
+              <h2 class="section-title">Besetzung</h2>
+              <dl class="cast__list">
+                {% for member in cast %}
+                  <div class="cast__item">
+                    <dt class="cast__role">{{ member.role }}</dt>
+                    <dd class="cast__actor">{{ member.actor }}</dd>
+                  </div>
+                {% endfor %}
+              </dl>
+            </div>
+          {% endif %}
+
+          {% if crew and crew.length %}
+            <div class="crew-wrapper">
+              <h2 class="section-title">Team</h2>
+              <dl class="crew__list">
+                {% for member in crew %}
+                  <div class="crew__item">
+                    <dt class="crew__role">{{ member.role }}</dt>
+                    <dd class="crew__name">{{ member.name }}</dd>
+                  </div>
+                {% endfor %}
+              </dl>
+            </div>
+          {% endif %}
+
+        </div>
+      </section>
+    {% endif %}
+
+    {# Area 4: Description #}
+    <section class="production-content-section">
+      <div class="grid-2">
+        <div class="production-description-wrapper">
+          {% if content %}
+            <h2 class="section-title">Über das Stück</h2>
+            <div class="production-description text-content">
+              {{ content | safe }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+  </article>
+</div>

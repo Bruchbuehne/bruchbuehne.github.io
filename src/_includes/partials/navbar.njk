@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav__brand">
+        <!-- Favicon / Logo Icon -->
+        <img src="/favicon.ico" alt="" class="nav__icon" width="24" height="24" onerror="this.style.display='none'">
+        <a href="/" class="nav__logo">{{ site.name }}</a>
+      </div>
+
+      <ul class="nav__links">
+        <li><a href="/inszenierungen/" class="nav__link" {% if page.url.startsWith('/inszenierungen') %}aria-current="page"{% endif %}>Inszenierungen</a></li>
+        <li><a href="/about/" class="nav__link" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>Über Uns</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

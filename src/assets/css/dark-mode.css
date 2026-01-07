@@ -1,0 +1,51 @@
+[data-theme="dark"] img {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .production-card__image,
+[data-theme="dark"] .production-hero__image {
+  opacity: 1;
+}
+
+[data-theme="dark"] .eckdaten {
+  background-color: var(--color-bg);
+}
+
+[data-theme="dark"] .site-header {
+  box-shadow: none;
+  border-bottom-color: var(--color-border);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-muted);
+}
+
+[data-theme="dark"] :focus-visible {
+  outline-color: var(--color-accent);
+  outline-width: var(--border-width);
+}
+
+.theme-toggle__icon--light {
+  display: none;
+}
+
+.theme-toggle__icon--dark {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle__icon--light {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle__icon--dark {
+  display: none;
+}

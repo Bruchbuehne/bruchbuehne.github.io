@@ -1,0 +1,214 @@
+---
+layout: layouts/base.njk
+title: Reservierungen
+permalink: /reservierungen/
+---
+
+<div class="container page-wrapper">
+  <header class="page-header">
+    <h1 class="page-header__title">Karten Reservieren</h1>
+    {% if site.currentProduction %}
+      <p class="page-header__subtitle">Reserviert euch hier Karten für <a href="{{ site.currentProduction.url }}">{{ site.currentProduction.title }}</a></p>
+    {% else %}
+      <p class="page-header__subtitle">Reserviert euch hier Karten für unsere kommenden Vorstellungen!</p>
+    {% endif %}
+  </header>
+
+  <div id="reservation-container" data-worker-url="{{ reservierung.worker_url }}">
+    <div id="loading" class="loading-message">
+      <div class="spinner"></div>
+      Lade verfügbare Vorstellungen...
+    </div>
+
+    <div id="no-shows" class="brutalist-box" style="display: none;">
+      <h3 class="section-title">Status</h3>
+      <p>Aktuell sind keine Vorstellungen zur Reservierung verfügbar.</p>
+      <p>Schaut bald wieder vorbei!</p>
+    </div>
+
+    <form id="reservation-form" class="reservation-form brutalist-box" style="display: none;">
+      <div class="form-group">
+        <label for="datum" class="form-label">Vorstellung</label>
+        <div class="select-wrapper">
+          <select id="datum" name="datum" required class="form-input">
+            <option value="">Bitte wählen...</option>
+          </select>
+        </div>
+        <span id="availability-info" class="form-hint"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="form-label">Vor- und Nachname</label>
+        <input type="text" id="name" name="name" required class="form-input" placeholder="Max Mustermann">
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" required class="form-input" placeholder="max@example.com">
+        <span class="form-hint">Du erhältst eine Bestätigung per E-Mail</span>
+      </div>
+
+      <div class="form-group">
+        <label for="anzahl" class="form-label">Anzahl Karten</label>
+        <input type="number" id="anzahl" name="anzahl" min="1" max="10" value="1" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="herkunft" class="form-label">Wie hast du von uns erfahren?</label>
+        <div class="select-wrapper">
+          <select id="herkunft" name="herkunft" class="form-input">
+            <option value="">Bitte wählen...</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Freunde">Freunde/Bekannte</option>
+            <option value="Plakat">Plakat/Flyer</option>
+            <option value="Website">Website</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group" id="herkunft-details-group" style="display: none;">
+        <label for="herkunft_details" class="form-label">Details</label>
+        <input type="text" id="herkunft_details" name="herkunft_details" class="form-input" placeholder="z.B. Instagram, Facebook, etc.">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn--primary" id="submit-btn">Reservierung absenden</button>
+      </div>
+
+      <p class="form-hint mt-md text-muted">
+        * Pflichtfelder. Mit deiner Reservierung erklärst du dich damit einverstanden, dass wir deine Daten zur Bearbeitung deiner Anfrage verwenden.
+      </p>
+    </form>
+
+    <div id="success-message" class="brutalist-box brutalist-box--accent" style="display: none;">
+      <h2 class="section-title text-accent">Erfolg</h2>
+      <p>Vielen Dank! Du erhältst in Kürze eine Bestätigung per E-Mail.</p>
+      <button class="btn btn--secondary mt-md" onclick="window.location.reload()">Weitere Reservierung</button>
+    </div>
+
+    <div id="error-message" class="brutalist-box" style="display: none; border-color: red;">
+      <h2 class="section-title" style="color: red;">Fehler</h2>
+      <p id="error-text"></p>
+      <button class="btn btn--secondary mt-md" onclick="window.location.reload()">Erneut versuchen</button>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/reservation.js" defer></script>
+
+<style>
+  .reservation-form {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+
+  .form-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    background-color: var(--color-bg); /* Contrast against surface */
+    color: var(--color-text);
+    font-size: var(--text-base);
+    font-family: var(--font-serif);
+    transition: all var(--transition-fast);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(255, 78, 0, 0.1);
+  }
+
+  /* Custom Select Style */
+  .select-wrapper {
+    position: relative;
+  }
+  .select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    pointer-events: none;
+  }
+  select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .form-hint {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    margin-top: 6px;
+  }
+
+  .loading-message {
+    text-align: center;
+    padding: var(--space-xl);
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .form-actions {
+    margin-top: var(--space-lg);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #success-message,
+  #error-message {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #success-message h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  #success-message p {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+</style>

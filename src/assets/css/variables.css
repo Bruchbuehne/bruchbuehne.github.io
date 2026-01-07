@@ -1,0 +1,76 @@
+:root {
+  --color-bg: #f0f0f0;
+  --color-surface: #ffffff;
+  --color-text: #000000;
+  --color-accent: #ff4e00;
+  --color-accent-hover: #e04500;
+  --color-secondary: #000000;
+  --color-link: #000000;
+  --color-highlight: #ffce00;
+  --color-success: #34c759;
+  --color-error: #ff3b30;
+  --color-border: #000000;
+  --color-border-light: #b0b0b0;
+  --color-muted: #555555;
+  --color-grid: #e5e5e5;
+
+  --font-serif: 'IBM Plex Serif', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --text-xs: 0.7rem;
+  --text-sm: 0.85rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5rem;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-2xl: 12rem;
+
+  --content-width: 1400px;
+  --gap: 2rem;
+  --gap-sm: 1rem;
+
+  --border-width: 1px;
+  --border-style: solid;
+  --border-radius: 0px;
+
+  --transition-fast: 0.1s ease-out;
+  --transition-base: 0.2s ease-out;
+}
+
+[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  --color-bg: #111111;
+  --color-surface: #000000;
+  --color-text: #e0e0e0;
+  --color-accent: #ff4e00;
+  --color-accent-hover: #ff6e33;
+  --color-secondary: #e0e0e0;
+  --color-link: #e0e0e0;
+  --color-border: #333333;
+  --color-border-light: #222222;
+  --color-muted: #888888;
+  --color-grid: #1a1a1a;
+}
+
+* {
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+[data-theme-transitioning] * {
+  transition: none !important;
+}

@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+
+<div class="container">
+  <header class="homepage-header">
+    <h1 class="homepage-header__title">{{ site.name }}</h1>
+    <p class="homepage-header__subtitle">eine lustige tag-line</p>
+    {% if site.reservations and site.currentProduction %}
+      <div class="mt-md">
+        <a href="/reservierungen/" class="btn btn--secondary">Karten für {{ site.currentProduction.title }} reservieren</a>
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="masonry-grid">
+    {% for production in collections.inszenierungen %}
+      {% set isLatest = loop.first %}
+      <article class="production-card {% if isLatest %}production-card--latest{% endif %}">
+        <a href="{{ production.url }}" class="production-card__link">
+          <div class="production-card__image-wrapper">
+            {% set imgClass = "production-card__image" %}
+            {% if isLatest %}
+              {% set imgClass = imgClass ~ " production-card__image--latest" %}
+            {% endif %}
+            {% image production.data.poster, production.data.title ~ " Poster", "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw", imgClass %}
+          </div>
+          <div class="production-card__content">
+            {% if production.data.author %}
+              <p class="production-card__author">{{ production.data.author }}</p>
+            {% endif %}
+            <h2 class="production-card__title">{{ production.data.title }}</h2>
+            {% if production.data.blurb %}
+              <p class="production-card__tagline">{{ production.data.blurb }}</p>
+            {% endif %}
+            {% if production.data.semester %}
+              <p class="production-card__semester">{{ production.data.semester }}</p>
+            {% endif %}
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+# Bruchbühne Shows Configuration
+# Edit this file to add/update shows, then deploy to update the database
+
+shows:
+  # Bruchstücke - Januar 2026
+  - title: "Bruchstücke"
+    author: "Bruchbühne Ensemble"
+    location: "Brechtbau Theater"
+    dates:
+      - date: "2026-01-26 19:00:00"
+        capacity: 60
+      - date: "2026-01-28 19:00:00"
+        capacity: 60
+      - date: "2026-01-29 19:00:00"
+        capacity: 60
+      - date: "2026-01-30 19:00:00"
+        capacity: 60
+
+# How to add a new show:
+# 1. Copy the template below
+# 2. Fill in your show details
+# 3. Save this file
+# 4. Run: npm run sync-shows (or wrangler deploy)
+# 5. Done! The database is updated automatically
+
+# Template:
+# - title: "Your Show Title"
+#   author: "Playwright Name"
+#   dates:
+#     - date: "YYYY-MM-DD HH:MM:SS"
+#       capacity: 50
+#     - date: "YYYY-MM-DD HH:MM:SS"
+#       capacity: 50
