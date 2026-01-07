@@ -19,6 +19,12 @@
   box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
 }
 
+.production-poster-wrapper picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .production-poster {
   width: 100%;
   height: auto;

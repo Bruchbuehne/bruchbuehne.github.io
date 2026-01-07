@@ -266,6 +266,12 @@
   overflow: hidden;
 }
 
+.production-card__image-wrapper picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .production-card__image {
   width: 100%;
   height: auto;
