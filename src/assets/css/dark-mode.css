@@ -1,6 +1,3 @@
-/* Dark Mode Specific Overrides */
-
-/* Adjust images in dark mode for better visibility */
 [data-theme="dark"] img {
   opacity: 0.9;
 }
@@ -10,17 +7,15 @@
   opacity: 1;
 }
 
-/* Enhanced contrast for important elements in dark mode */
 [data-theme="dark"] .eckdaten {
   background-color: var(--color-bg);
 }
 
 [data-theme="dark"] .site-header {
-  box-shadow: none; /* Flatten in dark mode too for consistent brutalism */
+  box-shadow: none;
   border-bottom-color: var(--color-border);
 }
 
-/* Ensure good contrast for form elements in dark mode */
 [data-theme="dark"] input,
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
@@ -34,15 +29,11 @@
   color: var(--color-muted);
 }
 
-/* Better focus visibility in dark mode */
 [data-theme="dark"] :focus-visible {
   outline-color: var(--color-accent);
   outline-width: var(--border-width);
 }
 
-/* Theme Toggle Icon Logic */
-
-/* Default (Light Mode): Show Moon, Hide Sun */
 .theme-toggle__icon--light {
   display: none;
 }
@@ -51,7 +42,6 @@
   display: block;
 }
 
-/* Dark Mode: Show Sun, Hide Moon */
 [data-theme="dark"] .theme-toggle__icon--light {
   display: block;
 }

@@ -1,107 +1,98 @@
-/* Layout Utilities - Engineered Grid */
-
-/* Container */
-
 .container {
   width: 100%;
   max-width: var(--content-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
-  position: relative;
-  
-  /* Vertical Guides - Subtle structural lines */
-  background-image: linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
-                    linear-gradient(to right, var(--color-grid) 1px, transparent 1px);
-  background-position: left, right;
-  background-size: 1px 100%;
-  background-repeat: no-repeat;
-  /* Don't show guides on edges, maybe just content bounds? */
-  /* Actually, let's just keep it clean for now, maybe add a left border to main content */
-  background: none; 
-}
-
-/* Add a subtle left guide line to the whole page container on large screens */
-@media (min-width: 1024px) {
-  .container {
-    border-left: 1px dashed var(--color-grid);
-    border-right: 1px dashed var(--color-grid);
-  }
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  border-left: 1px dashed var(--color-border-light);
+  border-right: 1px dashed var(--color-border-light);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
+    padding: 0 var(--space-sm);
     border: none;
   }
 }
 
-/* Main Content Area */
-
 .main-content {
-  min-height: calc(100vh - 100px);
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-xl);
+  min-height: calc(100vh - 60px);
+  padding: var(--space-lg) 0 var(--space-xl);
   position: relative;
+  z-index: 10;
 }
-
-/* Page corner registration marks - like vintage manuals */
-@media (min-width: 1024px) {
-  .main-content::before,
-  .main-content::after {
-    content: '';
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--color-grid);
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.4;
-  }
-
-  .main-content::before {
-    top: 80px;
-    left: 20px;
-    border-right: none;
-    border-bottom: none;
-  }
-
-  .main-content::after {
-    top: 80px;
-    right: 20px;
-    border-left: none;
-    border-bottom: none;
-  }
-}
-
-/* Page Wrapper */
 
 .page-wrapper {
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Spacing Utilities */
+.page-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header__title {
+  margin-bottom: var(--space-sm);
+}
+
+.page-header__subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  max-width: none;
+}
+
+.page-header__subtitle a {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+@media (min-width: 1024px) {
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  body::before {
+    top: 20px;
+    left: 20px;
+    background: 
+      linear-gradient(to right, var(--color-text) 1px, transparent 1px) 9px 0,
+      linear-gradient(to bottom, var(--color-text) 1px, transparent 1px) 0 9px;
+    background-size: 2px 20px, 20px 2px;
+    background-repeat: no-repeat;
+  }
+
+  body::after {
+    top: 20px;
+    right: 20px;
+    background: 
+      linear-gradient(to right, var(--color-text) 1px, transparent 1px) 9px 0,
+      linear-gradient(to bottom, var(--color-text) 1px, transparent 1px) 0 9px;
+    background-size: 2px 20px, 20px 2px;
+    background-repeat: no-repeat;
+  }
+}
 
 .mt-xs { margin-top: var(--space-xs); }
 .mt-sm { margin-top: var(--space-sm); }
 .mt-md { margin-top: var(--space-md); }
 .mt-lg { margin-top: var(--space-lg); }
 .mt-xl { margin-top: var(--space-xl); }
-
 .mb-xs { margin-bottom: var(--space-xs); }
 .mb-sm { margin-bottom: var(--space-sm); }
 .mb-md { margin-bottom: var(--space-md); }
 .mb-lg { margin-bottom: var(--space-lg); }
 .mb-xl { margin-bottom: var(--space-xl); }
-
-.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
-.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
-.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
-
-/* Flex Utilities */
+.py-sm { padding: var(--space-sm) 0; }
+.py-md { padding: var(--space-md) 0; }
+.py-lg { padding: var(--space-lg) 0; }
 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -110,25 +101,15 @@
 .gap-sm { gap: var(--gap-sm); }
 .gap-md { gap: var(--gap); }
 
-/* Grid Utilities */
-
-.grid {
-  display: grid;
-}
-
+.grid { display: grid; }
 .grid-2 {
-  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--gap);
 }
 
 @media (max-width: 768px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
+  .grid-2 { grid-template-columns: 1fr; }
 }
-
-/* Text Utilities */
 
 .text-center { text-align: center; }
 .text-right { text-align: right; }
@@ -137,100 +118,43 @@
 .text-mono { font-family: var(--font-mono); }
 .uppercase { text-transform: uppercase; letter-spacing: 0.05em; }
 
-/* Brutalist Box - Technical Panel */
-
-.brutalist-box {
-  border: 2px solid var(--color-border);
-  border-radius: 0;
-  padding: var(--space-md);
-  background-color: var(--color-surface);
-  position: relative;
-  box-shadow: inset 0 0 0 1px var(--color-bg);
-}
-
-/* Corner brackets */
-.brutalist-box::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--color-border-strong);
-  border-right: none;
-  border-bottom: none;
-}
-
-/* Figure label */
-.brutalist-box::after {
-  counter-increment: fig-counter;
-  content: 'FIG.' counter(fig-counter, decimal-leading-zero);
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-right: none;
-  border-bottom: none;
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  padding: 4px 8px;
-  letter-spacing: 0.05em;
-}
-
-.brutalist-box--accent {
-  border-color: var(--color-accent);
-}
-
-.brutalist-box--accent::before {
-  border-color: var(--color-accent);
-}
-
-.brutalist-box--accent::after {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-/* Divider - Technical Measurement Line */
-
 .divider {
   width: 100%;
-  height: 3px;
-  background: transparent;
+  height: 20px;
   margin: var(--space-lg) 0;
   position: relative;
-  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Measurement tick marks */
 .divider::before {
   content: '';
   position: absolute;
-  top: -1px;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: repeating-linear-gradient(
-    to right,
-    transparent 0,
-    transparent 48px,
-    var(--color-border) 48px,
-    var(--color-border) 50px
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-border) 0,
+    var(--color-border) 1px,
+    transparent 1px,
+    transparent 10px
   );
 }
 
-/* Center mark */
 .divider::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
-  transform: translate(-50%, -50%) rotate(45deg);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-border) 0,
+    var(--color-border) 1px,
+    transparent 1px,
+    transparent 100px
+  );
 }
+

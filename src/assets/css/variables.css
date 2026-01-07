@@ -1,110 +1,68 @@
-/* Design System - Teenage Engineering x Brutalism (Refined) */
-
 :root {
-  /* Colors - Extended Palette */
-  /* Base - Engineered Plastic/Metal */
-  --color-bg: #ececec;           /* Light Grey Chassis */
-  --color-surface: #fcfcfc;      /* White-ish panels */
-  --color-text: #1d1d1f;         /* Soft Black */
-  
-  /* Functional Colors */
-  --color-accent: #ff4e00;       /* Signal Orange (Primary Action) */
+  --color-bg: #f0f0f0;
+  --color-surface: #ffffff;
+  --color-text: #000000;
+  --color-accent: #ff4e00;
   --color-accent-hover: #e04500;
-  
-  /* Removed Blue, mapped to Orange or Neutral */
-  --color-secondary: #ff4e00;    /* Now Orange */
-  --color-link: #1d1d1f;         /* Links are black by default, orange on hover */
-  
-  --color-highlight: #ffce00;    /* Warning Yellow (Highlights) */
-  --color-success: #34c759;      /* LED Green */
+  --color-secondary: #000000;
+  --color-link: #000000;
+  --color-highlight: #ffce00;
+  --color-success: #34c759;
+  --color-error: #ff3b30;
+  --color-border: #000000;
+  --color-border-light: #b0b0b0;
+  --color-muted: #555555;
+  --color-grid: #e5e5e5;
 
-  /* Structural */
-  --color-border: #b0b0b0;       /* Lighter, metallic borders */
-  --color-border-strong: #1d1d1f; /* Strong structural lines */
-  --color-muted: #6e6e73;        /* Muted technical text */
-  --color-grid: #d1d1d6;         /* Grid lines */
-
-  /* Texture - CSS Noise */
-  --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-
-  /* Typography */
   --font-serif: 'IBM Plex Serif', serif;
   --font-mono: 'IBM Plex Mono', monospace;
-  
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 2rem;      /* 32px */
-  --text-4xl: 2.5rem;    /* 40px */
-  --text-5xl: 3.5rem;    /* 56px */
+  --text-xs: 0.7rem;
+  --text-sm: 0.85rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5rem;
 
-  /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
-  --space-xl: 6rem;
-  --space-2xl: 10rem;
+  --space-xl: 8rem;
+  --space-2xl: 12rem;
 
-  /* Layout */
-  --content-width: 1440px;
+  --content-width: 1400px;
   --gap: 2rem;
   --gap-sm: 1rem;
 
-  /* Borders */
   --border-width: 1px;
   --border-style: solid;
-  --border-radius: 0px; /* Sharp corners */
+  --border-radius: 0px;
 
-  /* Transitions */
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.1s ease-out;
+  --transition-base: 0.2s ease-out;
 }
 
-/* Dark Mode - Dark Anodized */
-[data-theme="dark"] {
-  --color-bg: #1c1c1e;           /* Dark Matte Grey */
-  --color-surface: #2c2c2e;      /* Slightly lighter panels */
-  --color-text: #f5f5f7;         /* Off-white */
-  
-  --color-accent: #ff5f1f;       /* Brighter Orange */
-  --color-accent-hover: #ff7e4d;
-  
-  --color-secondary: #ff5f1f;    
-  --color-link: #f5f5f7;
-
-  --color-highlight: #ffd60a;    /* Bright Yellow */
-  
-  --color-border: #3a3a3c;       /* Dark metallic borders */
-  --color-border-strong: #8e8e93;
-  --color-muted: #aeaeb2;
-  --color-grid: #3a3a3c;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: #1c1c1e;
-    --color-surface: #2c2c2e;
-    --color-text: #f5f5f7;
-    --color-accent: #ff5f1f;
-    --color-accent-hover: #ff7e4d;
-    --color-secondary: #ff5f1f;
-    --color-link: #f5f5f7;
-    --color-highlight: #ffd60a;
-    --color-border: #3a3a3c;
-    --color-border-strong: #8e8e93;
-    --color-muted: #aeaeb2;
-    --color-grid: #3a3a3c;
-  }
+[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  --color-bg: #111111;
+  --color-surface: #000000;
+  --color-text: #e0e0e0;
+  --color-accent: #ff4e00;
+  --color-accent-hover: #ff6e33;
+  --color-secondary: #e0e0e0;
+  --color-link: #e0e0e0;
+  --color-border: #333333;
+  --color-border-light: #222222;
+  --color-muted: #888888;
+  --color-grid: #1a1a1a;
 }
 
 * {

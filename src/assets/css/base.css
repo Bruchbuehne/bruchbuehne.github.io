@@ -1,7 +1,4 @@
-/* Font Face Declarations */
-
 /* IBM Plex Serif */
-
 @font-face {
   font-family: 'IBM Plex Serif';
   src: url('/assets/fonts/ibm-plex-serif/IBMPlexSerif-Regular.woff2') format('woff2');
@@ -42,8 +39,6 @@
   font-display: swap;
 }
 
-/* IBM Plex Mono */
-
 @font-face {
   font-family: 'IBM Plex Mono';
   src: url('/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2') format('woff2');
@@ -68,10 +63,6 @@
   font-display: swap;
 }
 
-/* Base Styles with Texture & Refined Typography */
-
-/* Imports from variables.css are assumed */
-
 html {
   font-size: 16px;
   box-sizing: border-box;
@@ -84,53 +75,42 @@ html {
 
 body {
   font-family: var(--font-serif);
-  font-weight: var(--font-weight-regular);
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.6;
   min-height: 100%;
-  position: relative;
   counter-reset: card-counter section-counter fig-counter;
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
-
-/* Texture via pseudo-element */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: var(--texture-noise);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-  mix-blend-mode: overlay;
-}
-
-/* Typography */
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
   font-weight: var(--font-weight-medium);
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: var(--space-sm);
-  letter-spacing: -0.01em;
-  color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
 h1 {
   font-size: var(--text-5xl);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-md);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }
 
 h2 {
   font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
 }
 
 h3 {
   font-size: var(--text-2xl);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 h4 {
@@ -140,17 +120,18 @@ h4 {
 
 h5 {
   font-size: var(--text-base);
-  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border);
+  display: inline-block;
+  padding-bottom: 2px;
 }
 
 h6 {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-muted);
-  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 p {
@@ -159,47 +140,59 @@ p {
   font-size: var(--text-base);
 }
 
-/* Links - Updated: Black by default, Orange on hover */
-
 a {
   color: var(--color-text);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-border);
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
 }
 
 a:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  border-radius: 2px;
 }
-
-/* Emphasis */
 
 strong, b {
   font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
 }
 
 em, i {
   font-style: italic;
-  font-family: var(--font-serif);
-  color: var(--color-text);
+  color: var(--color-muted);
 }
 
-/* Code */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+  font-style: italic;
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  background: var(--color-surface);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-left-width: 4px;
+}
 
 code, pre {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  color: var(--color-text);
+  padding: 0.2em 0.4em;
 }
 
 pre {
@@ -208,123 +201,35 @@ pre {
   margin-bottom: var(--space-sm);
 }
 
-/* Buttons - Unified "Keycap" Style */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6em 1.2em;
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--text-sm);
-  line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-
-  color: var(--color-text);
-  background-color: var(--color-surface);
-  border: 2px solid var(--color-border-strong);
-  border-radius: 0;
-
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-decoration: none;
-  position: relative;
-
-  /* Tactile shadow with inset border */
-  box-shadow: 0 2px 0 rgba(0,0,0,0.1), inset 0 0 0 1px var(--color-bg);
-}
-
-.btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background-color: var(--color-surface);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12), inset 0 0 0 1px var(--color-bg);
-}
-
-.btn:active {
-  transform: translateY(0);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-  background-color: var(--color-bg);
-}
-
-/* Primary Button - Solid Orange */
-.btn--primary {
-  background-color: var(--color-accent);
-  color: #fff;
-  border-color: var(--color-accent);
-}
-
-.btn--primary:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  color: #fff;
-}
-
-/* Secondary Button - Outline (same as default but explicit) */
-.btn--secondary {
-  background-color: transparent;
-}
-
-/* Images */
 img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--border-radius);
   display: block;
+  border: 1px solid var(--color-border);
 }
-
-/* Selection */
 
 ::selection {
   background-color: var(--color-accent);
   color: #fff;
 }
 
-/* Technical Label Utilities */
-
 .label-technical {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-muted);
-  font-weight: var(--font-weight-medium);
-  border: 1px solid var(--color-border);
+  color: var(--color-surface);
+  background: var(--color-text);
   padding: 2px 6px;
-  background: var(--color-surface);
   display: inline-block;
 }
 
-/* Stencil-style text - like military crates */
-.text-stencil {
-  font-family: var(--font-mono);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-}
-
-/* Section header with line */
 .section-header {
-  position: relative;
   padding-bottom: var(--space-sm);
   margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.section-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: var(--color-accent);
-}
-
-/* Caption style - like figure captions in manuals */
 .caption {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -332,9 +237,6 @@ img {
   margin-top: var(--space-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.caption::before {
-  content: '▸ ';
-  color: var(--color-accent);
+  border-left: 1px solid var(--color-accent);
+  padding-left: var(--space-xs);
 }
