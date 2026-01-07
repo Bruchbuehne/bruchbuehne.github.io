@@ -7,9 +7,14 @@ permalink: /reservierungen/
 <div class="container page-wrapper">
   <header class="page-header">
     <h1 class="page-header__title">Karten Reservieren</h1>
-    <p class="page-header__subtitle">Reserviert euch hier Karten für unsere kommenden Vorstellungen!</p>
+    {% if site.currentProduction %}
+      <p class="page-header__subtitle">Reserviert euch hier Karten für <a href="{{ site.currentProduction.url }}">{{ site.currentProduction.title }}</a></p>
+    {% else %}
+      <p class="page-header__subtitle">Reserviert euch hier Karten für unsere kommenden Vorstellungen!</p>
+    {% endif %}
+  </header>
 
-  <div id="reservation-container">
+  <div id="reservation-container" data-worker-url="{{ reservierung.worker_url }}">
     <div id="loading" class="loading-message">
       <div class="spinner"></div>
       Lade verfügbare Vorstellungen...
@@ -90,116 +95,7 @@ permalink: /reservierungen/
   </div>
 </div>
 
-<script>
-  const WORKER_URL = '{{ reservierung.worker_url }}';
-  let shows = [];
-
-  // Fetch available shows on page load
-  async function loadShows() {
-    try {
-      const response = await fetch(`${WORKER_URL}/availability`);
-      if (!response.ok) throw new Error('Failed to load shows');
-
-      shows = await response.json();
-
-      if (shows.length === 0) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('no-shows').style.display = 'block';
-        return;
-      }
-
-      populateShowsSelect();
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('reservation-form').style.display = 'block';
-    } catch (error) {
-      console.error('Error loading shows:', error);
-      document.getElementById('loading').textContent = 'Fehler beim Laden der Vorstellungen. Bitte lade die Seite neu.';
-    }
-  }
-
-  // Populate the shows dropdown
-  function populateShowsSelect() {
-    const select = document.getElementById('datum');
-    shows.forEach(show => {
-      const option = document.createElement('option');
-      option.value = show.dateFormatted; // Worker expects formatted date
-      option.textContent = `${show.date} - ${show.location}`; // Frontend displays formatted date
-      option.dataset.showId = show.id;
-      option.dataset.remaining = show.remaining;
-      option.dataset.capacity = show.capacity;
-
-      if (show.remaining === 0) {
-        option.disabled = true;
-        option.textContent += ' (Ausverkauft)';
-      }
-
-      select.appendChild(option);
-    });
-  }
-
-  // Update availability info when show is selected
-  document.getElementById('datum').addEventListener('change', function() {
-    const selected = this.options[this.selectedIndex];
-    const remaining = selected.dataset.remaining;
-    const capacity = selected.dataset.capacity;
-    const infoEl = document.getElementById('availability-info');
-
-    if (remaining) {
-      infoEl.textContent = `Noch ${remaining} von ${capacity} Plätzen verfügbar`;
-      infoEl.style.color = remaining < 10 ? 'var(--color-accent)' : 'var(--color-muted)';
-    } else {
-      infoEl.textContent = '';
-    }
-  });
-
-  // Show/hide herkunft details field
-  document.getElementById('herkunft').addEventListener('change', function() {
-    const detailsGroup = document.getElementById('herkunft-details-group');
-    if (this.value === 'Social Media' || this.value === 'Sonstiges') {
-        detailsGroup.style.display = 'block';
-    } else {
-        detailsGroup.style.display = 'none';
-    }
-  });
-
-  // Handle form submission
-  document.getElementById('reservation-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet...';
-
-    const formData = new FormData(this);
-
-    try {
-      const response = await fetch(`${WORKER_URL}/reserve`, {
-        method: 'POST',
-        body: formData
-      });
-
-      const result = await response.text();
-
-      if (response.ok && result.includes('OK')) {
-        document.getElementById('reservation-form').style.display = 'none';
-        document.getElementById('success-message').style.display = 'block';
-      } else {
-        throw new Error(result);
-      }
-    } catch (error) {
-      console.error('Error submitting reservation:', error);
-      document.getElementById('reservation-form').style.display = 'none';
-      document.getElementById('error-text').textContent = error.message || 'Ein Fehler ist aufgetreten. Bitte versuche es erneut.';
-      document.getElementById('error-message').style.display = 'block';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Reservierung absenden';
-    }
-  });
-
-  // Load shows on page load
-  loadShows();
-</script>
+<script src="/assets/js/reservation.js" defer></script>
 
 <style>
   .reservation-form {

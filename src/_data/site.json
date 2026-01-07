@@ -4,5 +4,9 @@
   "url": "https://bruchbuehne.de",
   "author": "Bruchbühne Tübingen",
   "language": "de",
-  "reservations": true
+  "reservations": true,
+  "currentProduction": {
+    "title": "Bruchstücke",
+    "url": "/inszenierungen/2026-01-bruchstuecke/"
+  }
 }

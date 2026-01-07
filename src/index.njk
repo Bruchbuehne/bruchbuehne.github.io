@@ -6,10 +6,10 @@ title: Home
 <div class="container">
   <header class="homepage-header">
     <h1 class="homepage-header__title">{{ site.name }}</h1>
-    <p class="homepage-header__subtitle">Das haben wir schon aufgeführt</p>
-    {% if site.reservations %}
+    <p class="homepage-header__subtitle">eine lustige tag-line</p>
+    {% if site.reservations and site.currentProduction %}
       <div class="mt-md">
-        <a href="/reservierungen/" class="btn btn--secondary">Reservieren</a>
+        <a href="/reservierungen/" class="btn btn--secondary">Karten für {{ site.currentProduction.title }} reservieren</a>
       </div>
     {% endif %}
   </header>
