@@ -13,14 +13,7 @@
   <link rel="preload" href="/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Dark Mode Script (Inline to prevent FOUC) -->
-  <script>
-    (function() {
-      const theme = localStorage.getItem('theme');
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const preferredTheme = theme || (systemPrefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', preferredTheme);
-    })();
-  </script>
+  <script src="/assets/js/theme-init.js"></script>
 
   <!-- Stylesheets - Load in correct order -->
   <link rel="stylesheet" href="/assets/css/reset.css">
@@ -30,6 +23,7 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/masonry.css">
   <link rel="stylesheet" href="/assets/css/gallery.css">
+  <link rel="stylesheet" href="/assets/css/production.css">
   <link rel="stylesheet" href="/assets/css/dark-mode.css">
 </head>
 <body>

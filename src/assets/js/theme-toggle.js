@@ -1,9 +1,3 @@
-/**
- * Theme Toggle - Dark Mode Implementation
- * Allows users to toggle between light and dark themes
- * Respects system preference by default, with user override saved in localStorage
- */
-
 class ThemeToggle {
   constructor() {
     this.theme = this.getTheme();
@@ -11,36 +5,22 @@ class ThemeToggle {
     this.listen();
   }
 
-  /**
-   * Get current theme from HTML attribute
-   */
   getTheme() {
     return document.documentElement.getAttribute('data-theme') || 'light';
   }
 
-  /**
-   * Set theme on HTML element and save to localStorage
-   */
   setTheme(theme) {
     this.theme = theme;
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-
-    // Update toggle button aria-label
     this.updateToggleButton();
   }
 
-  /**
-   * Toggle between light and dark themes
-   */
   toggle() {
     const newTheme = this.theme === 'dark' ? 'light' : 'dark';
     this.setTheme(newTheme);
   }
 
-  /**
-   * Update toggle button aria-label for accessibility
-   */
   updateToggleButton() {
     const toggle = document.querySelector('[data-theme-toggle]');
     if (toggle) {
@@ -49,18 +29,11 @@ class ThemeToggle {
     }
   }
 
-  /**
-   * Initialize toggle button
-   */
   initToggle() {
     this.updateToggleButton();
   }
 
-  /**
-   * Listen for events
-   */
   listen() {
-    // Listen for toggle button clicks
     document.addEventListener('click', (e) => {
       if (e.target.matches('[data-theme-toggle]') || e.target.closest('[data-theme-toggle]')) {
         e.preventDefault();
@@ -68,7 +41,6 @@ class ThemeToggle {
       }
     });
 
-    // Listen for keyboard activation (Enter/Space)
     document.addEventListener('keydown', (e) => {
       const toggle = document.querySelector('[data-theme-toggle]');
       if (toggle && (toggle === e.target || toggle.contains(e.target))) {
@@ -79,9 +51,7 @@ class ThemeToggle {
       }
     });
 
-    // Listen for system preference changes (only if user hasn't set a preference)
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      // Only update if user hasn't explicitly set a preference
       if (!localStorage.getItem('theme')) {
         const systemTheme = e.matches ? 'dark' : 'light';
         this.setTheme(systemTheme);
@@ -90,7 +60,6 @@ class ThemeToggle {
   }
 }
 
-// Initialize theme toggle when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => new ThemeToggle());
 } else {

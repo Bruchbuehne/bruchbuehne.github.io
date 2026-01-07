@@ -8,8 +8,8 @@
       </div>
 
       <ul class="nav__links">
-        <li><a href="/inszenierungen/" class="nav__link">Inszenierungen</a></li>
-        <li><a href="/about/" class="nav__link">Über Uns</a></li>
+        <li><a href="/inszenierungen/" class="nav__link" {% if page.url.startsWith('/inszenierungen') %}aria-current="page"{% endif %}>Inszenierungen</a></li>
+        <li><a href="/about/" class="nav__link" {% if page.url.startsWith('/about') %}aria-current="page"{% endif %}>Über Uns</a></li>
       </ul>
     </nav>
   </div>

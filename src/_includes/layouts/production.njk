@@ -18,13 +18,10 @@ layout: layouts/base.njk
       {# Col 2: Info & Eckdaten #}
       <div class="production-main-info">
         <div class="production-titles">
-          {% if author %}
-            <p class="production-author">{{ author }}</p>
-          {% endif %}
           <h1 class="production-title">{{ title }}</h1>
           {% if reservations %}
             <div class="mt-sm">
-              <a href="/reservierungen/" class="btn btn--secondary">Reservieren</a>
+              <a href="/reservierungen/?show={{ title | urlencode }}" class="btn btn--secondary">Reservieren</a>
             </div>
           {% endif %}
         </div>
@@ -59,6 +56,18 @@ layout: layouts/base.njk
             <div class="eckdaten__item">
               <span class="eckdaten__label">Inhalt</span>
               <span class="eckdaten__value">{{ blurb }}</span>
+            </div>
+          {% endif %}
+          
+          {# Brochure Download in Eckdaten #}
+          {% if programmheft %}
+            <div class="eckdaten__item">
+              <span class="eckdaten__label">Material</span>
+              <span class="eckdaten__value">
+                <a href="/assets/{{ short }}/programmheft-{{ programmheft }}.pdf" download class="text-accent hover:underline">
+                  Programmheft (PDF)
+                </a>
+              </span>
             </div>
           {% endif %}
         </div>
@@ -109,36 +118,17 @@ layout: layouts/base.njk
       </section>
     {% endif %}
 
-    {# Area 4: Description & Downloads #}
+    {# Area 4: Description #}
     <section class="production-content-section">
       <div class="grid-2">
         <div class="production-description-wrapper">
-          <h2 class="section-title">Über das Stück</h2>
-          {% if blurb or content %}
+          {% if content %}
+            <h2 class="section-title">Über das Stück</h2>
             <div class="production-description text-content">
-              {% if content %}
-                {{ content | safe }}
-              {% else %}
-                {{ blurb }}
-              {% endif %}
+              {{ content | safe }}
             </div>
           {% endif %}
         </div>
-
-        {% if programmheft %}
-          <div class="production-downloads-wrapper">
-            <h2 class="section-title">Material</h2>
-            <ul class="brochures__list">
-              <li>
-                <a href="/assets/{{ short }}/programmheft-{{ programmheft }}.pdf"
-                   download
-                   class="brochures__link btn btn--secondary">
-                   <span style="margin-right: 0.5em">↓</span> Programmheft (PDF)
-                </a>
-              </li>
-            </ul>
-          </div>
-        {% endif %}
       </div>
     </section>
 

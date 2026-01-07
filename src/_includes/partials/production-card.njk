@@ -1,4 +1,4 @@
-<article class="production-card">
+<article class="production-card {% if isLatest %}production-card--latest{% endif %}">
   <a href="{{ production.url }}" class="production-card__link">
     <div class="production-card__image-wrapper">
       <img src="{{ production.data.poster }}"
