@@ -89,28 +89,53 @@ layout: layouts/base.njk
           {% if cast and cast.length %}
             <div class="cast-wrapper">
               <h2 class="section-title">Besetzung</h2>
-              <dl class="cast__list">
-                {% for member in cast %}
-                  <div class="cast__item">
-                    <dt class="cast__role">{{ member.role }}</dt>
-                    <dd class="cast__actor">{{ member.actor }}</dd>
-                  </div>
+              <div class="team-grid">
+                {% for group in cast | groupByScene %}
+                  {% if not loop.first %}
+                    <div class="team-grid__separator"></div>
+                  {% endif %}
+
+                  {% if group.scene %}
+                    <div class="team-grid__label" style="grid-row: span {{ group.items.length }};">
+                      <span>{{ group.scene }}</span>
+                    </div>
+                  {% else %}
+                    {# Spacer for items without scene #}
+                     <div class="team-grid__label team-grid__label--empty" style="grid-row: span {{ group.items.length }};"></div>
+                  {% endif %}
+
+                  {% for member in group.items %}
+                    <div class="team-grid__role">{{ member.role }}</div>
+                    <div class="team-grid__name">{{ member.actor }}</div>
+                  {% endfor %}
                 {% endfor %}
-              </dl>
+              </div>
             </div>
           {% endif %}
 
           {% if crew and crew.length %}
             <div class="crew-wrapper">
               <h2 class="section-title">Team</h2>
-              <dl class="crew__list">
-                {% for member in crew %}
-                  <div class="crew__item">
-                    <dt class="crew__role">{{ member.role }}</dt>
-                    <dd class="crew__name">{{ member.name }}</dd>
-                  </div>
+              <div class="team-grid">
+                {% for group in crew | groupByScene %}
+                  {% if not loop.first %}
+                    <div class="team-grid__separator"></div>
+                  {% endif %}
+
+                  {% if group.scene %}
+                    <div class="team-grid__label" style="grid-row: span {{ group.items.length }};">
+                      <span>{{ group.scene }}</span>
+                    </div>
+                  {% else %}
+                    <div class="team-grid__label team-grid__label--empty" style="grid-row: span {{ group.items.length }};"></div>
+                  {% endif %}
+
+                  {% for member in group.items %}
+                    <div class="team-grid__role">{{ member.role }}</div>
+                    <div class="team-grid__name">{{ member.name }}</div>
+                  {% endfor %}
                 {% endfor %}
-              </dl>
+              </div>
             </div>
           {% endif %}
 
