@@ -149,6 +149,33 @@ module.exports = function(eleventyConfig) {
     return match ? match[0] : datesString.split(',')[0];
   });
 
+  // Group consecutive items by 'scene' property
+  // Input: [{role: "A", scene: "1"}, {role: "B", scene: "1"}, {role: "C", scene: "2"}]
+  // Output: [{scene: "1", items: [{role: "A"...}, {role: "B"...}]}, {scene: "2", items: [{role: "C"...}]}]
+  eleventyConfig.addFilter("groupByScene", function(list) {
+    if (!list || !Array.isArray(list)) return [];
+    
+    const groups = [];
+    let currentGroup = null;
+
+    list.forEach(item => {
+      const itemScene = item.scene || null;
+      
+      // If no group or scene changed
+      if (!currentGroup || currentGroup.scene !== itemScene) {
+        currentGroup = {
+          scene: itemScene,
+          items: []
+        };
+        groups.push(currentGroup);
+      }
+      
+      currentGroup.items.push(item);
+    });
+
+    return groups;
+  });
+
   // Watch targets for dev mode
   eleventyConfig.addWatchTarget("src/assets/css/");
   eleventyConfig.addWatchTarget("src/assets/js/");
