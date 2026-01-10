@@ -3,7 +3,7 @@ reservations: true
 short: '2026-bruchstuecke'
 title: 'Bruchstücke'
 author: Bruchbühnenensemble & Freunde
-blurb: "Szenen, Szenen, Szenen—und ein roter Faden"
+blurb: "Eine Szenencollage"
 date: 2026-01-08
 dates: "25., 26., 27., 28. Januar 2026"
 semester: WiSe 25/26
@@ -14,58 +14,58 @@ cast:
     actor: Lio 
     scene: Engel & Teufel
   - role: Teufel
-    actor: Regina Gejer
+    actor: Sophia
     scene: Engel & Teufel
   - role: Socke
-    actor: Miriaum Mauthe
+    actor: Miriaum 
     scene: when to act
   - role: Topi
-    actor: Dominic Lupas
+    actor: Dominic 
     scene: when to act
   - role: Lampe
-    actor: Anka Doese
+    actor: Anka 
     scene: when to act
   - role: Müsli
-    actor: Sarina Vitillo
+    actor: Sarina 
     scene: when to act
   - role: Ernst
-    actor: Flynn Take
+    actor: Flynn 
     scene: when to act
   - role: Fussel
     actor: Jan Riebe
     scene: when to act
   - role: Flamme
-    actor: Regina Gejer
+    actor: Sophia
     scene: when to act
   - role: Hicks
     actor: Elo
     scene: when to act
   - role: J. Edgar
-    actor: Nicolai Plenk
+    actor: Nicolai 
     scene: when to act
   - role: A
     actor: Veronika
     scene: wütend
   - role: B
-    actor: Susanne König
+    actor: Susanne 
     scene: wütend
   - role: C
-    actor: Jakob Sappler
+    actor: Jakob 
     scene: wütend
   - role: Aleksei
-    actor: Gabriel Jann
+    actor: Gabriel 
     scene: Aleksei verblutet
   - role: Berater
-    actor: Jan Riebe
+    actor: Jan 
     scene: Aleksei verblutet
   - role: Fürstin
-    actor: Susanne König
+    actor: Susanne 
     scene: Aleksei verblutet
   - role: Arzt
-    actor: Jakob Sappler
+    actor: Jakob 
     scene: Aleksei verblutet
   - role: Don
-    actor: Gabriel Jann
+    actor: Gabriel 
     scene: Blutrausch
   - role: El C
     actor: Till
@@ -74,7 +74,7 @@ cast:
     actor: Veronika
     scene: Blutrausch
   - role: Master
-    actor: Eleni Brüggemann
+    actor: Eleni 
     scene: Blutrausch
   - role: Erzähler/Martin
     actor: Till
@@ -83,25 +83,25 @@ cast:
     actor: Lio
     scene: Ode an den Lachs
   - role: Lachs
-    actor: Miriam Mauthe
+    actor: Miriam 
     scene: Ode an den Lachs
   - role: Die Fische
-    actor: Anka Doese, Jan Riebe, Gabriel Jann
+    actor: Anka, Jan, Gabriel 
     scene: Ode an den Lachs
   - role: Stimme aus dem Off
     actor: Veronika
     scene: Ode an den Lachs
   - role: Erste
-    actor: Dominic Lupas
+    actor: Dominic 
     scene: Pausen
   - role: Zweite
-    actor: Sarina Vitillo
+    actor: Sarina 
     scene: Pausen
   - role: Person
-    actor: Ilea Rahn
+    actor: Ilea 
     scene: Die Essenz
   - role: A
-    actor: Anka Doese
+    actor: Anka 
     scene: Was bleibt
   - role: B
     actor: Lio
@@ -113,40 +113,23 @@ cast:
     actor: Elo
     scene: Was bleibt
   - role: Ältere Dame
-    actor: Miriam Mauthe
+    actor: Miriam 
     scene: Was bleibt
   - role: Florian
-    actor: Nicolai Plenk
-    scene: Die Beerdigung
-  - role: Micha
-    actor: Jakob Sappler
-    scene: Die Beerdigung
-  - role: Hanna
-    actor: Susanne König
-    scene: Die Beerdigung
-  - role: Nadja
-    actor: Ilea Rahn
-    scene: Die Beerdigung
-  - role: Friedhofsmitarbeiterin
-    actor: Djamilja Lindt
+    actor: Nicolai 
     scene: Die Beerdigung
   - role: Ali
-    actor: Eleni Brüggemann
+    actor: Eleni 
     scene: Die Midashand
   - role: Jones
-    actor: Gabriel Jann
+    actor: Gabriel 
     scene: Die Midashand
   - role: Theseus
-    actor: Djamilja Lindt
+    actor: Djamilja 
     scene: Die Midashand
-  - role: Morgan
-    actor: Dominic Lupas
-    scene: Goldregen
-  - role: Menschen
-    actor: Anka Doese, Miriam Mauthe, Nicolai Plenk, Till
-    scene: Goldregen
 crew:
   - role: Technik
     name: Rian Knittel
 
 ---
+Dieses Semester haben wir uns an das Experiment gewagt, selbstgeschriebene Szenen zu einer Collage zusammenzufügen. Kommt vorbei wir freuen uns auf euch!
