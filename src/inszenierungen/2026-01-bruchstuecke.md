@@ -17,7 +17,7 @@ cast:
     actor: Sophia
     scene: Engel & Teufel
   - role: Socke
-    actor: Miriaum 
+    actor: Miriam
     scene: when to act
   - role: Topi
     actor: Dominic 
@@ -32,7 +32,7 @@ cast:
     actor: Flynn 
     scene: when to act
   - role: Fussel
-    actor: Jan Riebe
+    actor: Jan
     scene: when to act
   - role: Flamme
     actor: Sophia
@@ -115,9 +115,6 @@ cast:
   - role: Ältere Dame
     actor: Miriam 
     scene: Was bleibt
-  - role: Florian
-    actor: Nicolai 
-    scene: Die Beerdigung
   - role: Ali
     actor: Eleni 
     scene: Die Midashand
