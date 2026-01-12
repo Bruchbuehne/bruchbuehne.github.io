@@ -1,8 +1,0 @@
-# Cloudflare Pages configuration for the main Bruchbühne website
-# This is a static site built with Eleventy
-
-name = "bruchbuehne"
-compatibility_date = "2026-01-12"
-
-# Pages configuration
-pages_build_output_dir = "_site"

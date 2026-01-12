@@ -3,8 +3,10 @@ workers/
 node_modules/
 .git/
 .wrangler/
+.github/
 src/
 .eleventy.js
+wrangler.toml
 package.json
 package-lock.json
 README.md
