@@ -125,7 +125,7 @@
 .team-grid__separator {
   grid-column: 1 / -1;
   height: 4px;
-  background-color: var(--color-border); /* Thicker line appearance */
+  background-color: var(--color-border); 
 }
 
 /* Hover effect for rows */
@@ -133,5 +133,12 @@
 .team-grid__name:hover {
   background-color: var(--color-accent);
   color: #000000;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .production-title {
+    font-size: 2rem;
+  }
 }
 
