@@ -1,0 +1,10 @@
+# Don't deploy these to Cloudflare Pages
+workers/
+node_modules/
+.git/
+.wrangler/
+src/
+.eleventy.js
+package.json
+package-lock.json
+README.md
