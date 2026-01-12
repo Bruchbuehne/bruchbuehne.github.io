@@ -91,6 +91,7 @@ async function handleAvailability(env, corsHeaders) {
     id: show.id,
     title: show.title,
     date: show.dateFormatted,
+    dateFormatted: show.dateFormatted,
     location: show.location,
     capacity: show.capacity,
     reserved: show.reserved || 0,
@@ -191,16 +192,20 @@ async function handleReservation(request, env, corsHeaders) {
   // Extract show time from date string (e.g., "2025-07-07 19:00:00" -> "19:00")
   const showTime = show.date.split(' ')[1].substring(0, 5);
 
-  // Send confirmation email
-  await sendConfirmationEmail(env, {
-    name,
-    email,
-    showTitle: show.title,
-    showDate: show.dateFormatted,
-    showTime: showTime,
-    location: show.location,
-    tickets
-  });
+  // Send confirmation email (non-blocking - errors won't fail the reservation)
+  try {
+    await sendConfirmationEmail(env, {
+      name,
+      email,
+      showTitle: show.title,
+      showDate: show.dateFormatted,
+      showTime: showTime,
+      location: show.location,
+      tickets
+    });
+  } catch (error) {
+    console.error('Email send failed (non-critical):', error);
+  }
 
   // Sync to Google Sheets (non-blocking - errors won't fail the reservation)
   if (env.GOOGLE_SHEETS_WEBHOOK) {
@@ -338,36 +343,37 @@ async function sendConfirmationEmail(env, { name, email, showTitle, showDate, sh
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Space+Grotesk:wght@600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: 'IBM Plex Serif', Georgia, serif;
       line-height: 1.6;
-      color: #333;
-      background: #f5f5f5;
+      color: #000000;
+      background: #f0f0f0;
       padding: 20px;
     }
     .container {
       max-width: 600px;
       margin: 0 auto;
       background: white;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      border: 1px solid #000000;
     }
     .header {
-      background: linear-gradient(135deg, #dd4462 0%, #4467dd 100%);
+      background: #ff4e00;
       color: white;
       padding: 40px 30px;
       text-align: center;
+      border-bottom: 1px solid #000000;
     }
     .header h1 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'IBM Plex Serif', Georgia, serif;
       margin: 0;
       font-size: 32px;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
     .header .emoji {
       font-size: 48px;
@@ -383,47 +389,54 @@ async function sendConfirmationEmail(env, { name, email, showTitle, showDate, sh
     }
     .greeting {
       font-size: 18px;
-      color: #555;
+      color: #000000;
       margin-bottom: 8px;
+      font-weight: 600;
     }
     .intro {
       font-size: 16px;
       margin-bottom: 24px;
     }
     .ticket-info {
-      background: linear-gradient(to right, rgba(221, 68, 98, 0.05) 0%, rgba(68, 103, 221, 0.05) 100%);
+      background: #ffffff;
       padding: 24px;
-      border-left: 4px solid #dd4462;
+      border: 1px solid #000000;
       margin: 24px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 0;
     }
     .ticket-info p {
       margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
     }
     .ticket-info p:last-child {
       margin-bottom: 0;
     }
     .ticket-info strong {
-      color: #dd4462;
+      color: #000000;
       font-weight: 600;
-      font-family: 'Space Grotesk', sans-serif;
       flex-shrink: 0;
       margin-right: 16px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.05em;
     }
     .ticket-info span {
       text-align: right;
-      font-weight: 500;
+      font-weight: 400;
     }
     .section-title {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'IBM Plex Serif', Georgia, serif;
       font-size: 18px;
       font-weight: 700;
-      color: #222;
+      color: #000000;
       margin: 24px 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-size: 14px;
     }
     ul {
       list-style: none;
@@ -433,51 +446,52 @@ async function sendConfirmationEmail(env, { name, email, showTitle, showDate, sh
     ul li {
       padding: 12px 0 12px 32px;
       position: relative;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #e5e5e5;
     }
     ul li:last-child {
       border-bottom: none;
     }
     ul li:before {
-      content: '✓';
+      content: '→';
       position: absolute;
       left: 0;
-      color: #dd4462;
+      color: #ff4e00;
       font-weight: bold;
       font-size: 18px;
     }
     ul li strong {
-      color: #dd4462;
+      color: #ff4e00;
       font-weight: 600;
     }
     .closing {
       margin-top: 32px;
       padding-top: 24px;
-      border-top: 2px solid #f0f0f0;
+      border-top: 1px solid #000000;
     }
     .signature {
       font-weight: 600;
-      color: #222;
+      color: #000000;
       margin-top: 8px;
     }
     .footer {
-      background: #f8f8f8;
+      background: #f0f0f0;
       text-align: center;
       padding: 24px 30px;
-      color: #666;
+      color: #555555;
       font-size: 14px;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #000000;
+      font-family: 'IBM Plex Mono', monospace;
     }
     .footer p {
       margin-bottom: 8px;
     }
     .footer-note {
       font-size: 12px;
-      color: #999;
+      color: #555555;
       margin-top: 16px;
     }
     .website-link {
-      color: #dd4462;
+      color: #ff4e00;
       text-decoration: none;
       font-weight: 600;
     }
@@ -578,6 +592,7 @@ Diese E-Mail wurde automatisch generiert. Bei Fragen antworte einfach auf diese 
       },
       body: JSON.stringify({
         from: 'Bruchbühne Tübingen <reservierungen@bruchbuehne.de>',
+        reply_to: 'bruchbuehne@gmail.com',
         to: [email],
         subject: `Reservierungsbestätigung - ${showTitle}`,
         html: emailHtml,

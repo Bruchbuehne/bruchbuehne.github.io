@@ -172,23 +172,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Update availability info when show is selected
-  const datumSelect = document.getElementById('datum');
-  if (datumSelect) {
-    datumSelect.addEventListener('change', function() {
-      const selected = this.options[this.selectedIndex];
-      const remaining = selected.dataset.remaining;
-      const capacity = selected.dataset.capacity;
-      const infoEl = document.getElementById('availability-info');
-
-      if (remaining) {
-        infoEl.textContent = `Noch ${remaining} von ${capacity} Plätzen verfügbar`;
-        infoEl.style.color = remaining < 10 ? 'var(--color-accent)' : 'var(--color-muted)';
-      } else {
-        infoEl.textContent = '';
-      }
-    });
-  }
+  // Update availability info when show is selected (disabled to not show seat count)
+  // const datumSelect = document.getElementById('datum');
+  // if (datumSelect) {
+  //   datumSelect.addEventListener('change', function() {
+  //     const selected = this.options[this.selectedIndex];
+  //     const remaining = selected.dataset.remaining;
+  //     const capacity = selected.dataset.capacity;
+  //     const infoEl = document.getElementById('availability-info');
+  //
+  //     if (remaining) {
+  //       infoEl.textContent = `Noch ${remaining} von ${capacity} Plätzen verfügbar`;
+  //       infoEl.style.color = remaining < 10 ? 'var(--color-accent)' : 'var(--color-muted)';
+  //     } else {
+  //       infoEl.textContent = '';
+  //     }
+  //   });
+  // }
 
   // Show/hide herkunft details field
   const herkunftSelect = document.getElementById('herkunft');
