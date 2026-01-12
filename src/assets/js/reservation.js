@@ -136,6 +136,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Reload button handlers
+  const reloadSuccessBtn = document.getElementById('reload-success-btn');
+  const reloadErrorBtn = document.getElementById('reload-error-btn');
+
+  if (reloadSuccessBtn) {
+    reloadSuccessBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+
+  if (reloadErrorBtn) {
+    reloadErrorBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+
   // Load shows on page load
   loadShows();
 });

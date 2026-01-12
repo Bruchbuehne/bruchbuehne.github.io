@@ -3,7 +3,7 @@
     <nav class="nav">
       <div class="nav__brand">
         <!-- Favicon / Logo Icon -->
-        <img src="/favicon.ico" alt="" class="nav__icon" width="24" height="24" onerror="this.style.display='none'">
+        <img src="/favicon.ico" alt="" class="nav__icon" width="24" height="24" id="nav-icon">
         <a href="/" class="nav__logo">{{ site.name }}</a>
       </div>
 
@@ -14,3 +14,10 @@
     </nav>
   </div>
 </header>
+
+<script>
+  // Handle favicon load error
+  document.getElementById('nav-icon')?.addEventListener('error', function() {
+    this.style.display = 'none';
+  });
+</script>
