@@ -84,13 +84,13 @@ permalink: /reservierungen/
     <div id="success-message" class="brutalist-box brutalist-box--accent" style="display: none;">
       <h2 class="section-title text-accent">Erfolg</h2>
       <p>Vielen Dank! Du erhältst in Kürze eine Bestätigung per E-Mail.</p>
-      <button class="btn btn--secondary mt-md" onclick="window.location.reload()">Weitere Reservierung</button>
+      <button class="btn btn--secondary mt-md" id="reload-success-btn">Weitere Reservierung</button>
     </div>
 
     <div id="error-message" class="brutalist-box" style="display: none; border-color: red;">
       <h2 class="section-title" style="color: red;">Fehler</h2>
       <p id="error-text"></p>
-      <button class="btn btn--secondary mt-md" onclick="window.location.reload()">Erneut versuchen</button>
+      <button class="btn btn--secondary mt-md" id="reload-error-btn">Erneut versuchen</button>
     </div>
   </div>
 </div>
