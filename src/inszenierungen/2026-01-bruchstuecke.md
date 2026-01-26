@@ -133,9 +133,6 @@ crew:
 ---
 Dieses Semester haben wir uns an das Experiment gewagt, selbstgeschriebene Szenen zu einer Collage zusammenzufügen. Kommt vorbei wir freuen uns auf euch!
 
-
-## Wer wir sind und wie wir arbeiten
-
 Dieses Semester haben wir etwas neues ausprobiert und unser Stück selbst geschrieben. Wir wollten damit vier Fliegen mit einer Klappe schlagen:
 Erstens: Manche von uns schreiben gerne und wollten sich an Theaterstücken versuchen.
 Zweitens: Wer versucht, Theaterstücke mit vielen kleinen bis mittelgroße Rollen zu finden, wird feststellen , dass es davon viel zu wenige gibt für eine Gruppe wie unsere.
@@ -144,7 +141,7 @@ Und Viertens: Eine Szenencollage lässt mehr Raum für kreative Ideen und auch d
  
 Ende des letzten Semesters haben wir uns daher auf Schlagwörter als Inspiration zum Schreiben geeinigt:
 „Gewalt“, „Überall quillt Blut raus“, „Friedhöfe“, "Beerdigung"
-Um uns beim Schreiben nicht einzuschränken, waren diese Themen nicht verpflichtend. Sie als Zuschauer*in sind aber dazu eingeladen, Anspielungen daran in den einzelnen Stücken zu finden.
+Um uns beim Schreiben nicht einzuschränken, waren diese Themen nicht verpflichtend. Sie als Zuschauer:in sind aber dazu eingeladen, Anspielungen daran in den einzelnen Stücken zu finden.
 Über den Sommer konnten alle mit Ambitionen zum Autor:innentum Szenen schreiben. Ein "Kürzungs"-AK aus besonders theaterhungrigen Textfanatiker:innen kümmerte sich darum, aus allen eingesendeten Skripten eine zusammenhängende Collage zu erstellen.
 Auch dieses Mal gab es keine Vorsprechen oder Castings. Stattdessen haben wir die Rollen gemeinsam vergeben. Wir haben die Erfahrung gemacht, dass es selten Konflikte gibt und wenn, dass man diese gut mit einem klassischen Faustkampf hinter dem Theater lösen kann. Dank der ausufernden Opulenz in der Vorstellung unserer Autor:innen, die Ensemblegröße betreffend, spielen viele in der Gruppe dieses Mal gleich mehrere Rollen. Deshalb war die große Herausforderung in der Rollenvergabe tatsächlich nicht, konkurrierende Rollenwünsche zu berücksichtigen, sondern, die Rollen so zu verteilen, dass wir, wie geplant, möglichst oft Szenen parallel proben konnten. Wir haben uns entschieden, das zu ignorieren und die Probenplanung wurde dadurch zu einem spannenden Puzzle, welches unser dafür einberufener Prozess AK mit Spreadsheets, etwas Python Code und vielen Tränen gelöst hat.
  
