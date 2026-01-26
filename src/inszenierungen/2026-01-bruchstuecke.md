@@ -5,7 +5,7 @@ title: 'Bruchstücke'
 author: Bruchbühnenensemble & Freunde
 blurb: "Eine Szenencollage"
 date: 2026-01-08
-dates: "26., 28., 29. & 30. Jan Riebeuar 2026"
+dates: "26., 28., 29. & 30. Januar 2026"
 semester: WiSe 25/26
 poster: /assets/2026-bruchstuecke/bruchstuecke-poster.jpg
 credit: Poster gestaltet von Veronika
