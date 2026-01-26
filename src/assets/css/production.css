@@ -140,5 +140,29 @@
   .production-title {
     font-size: 2rem;
   }
+  
+  .team-grid {
+    grid-template-columns: 2.5rem 1fr;
+  }
+  
+  .team-grid__role {
+    grid-column: 2;
+    border-right: none;
+    border-bottom: 1px dashed var(--color-border-light);
+    padding-bottom: 0;
+  }
+  
+  .team-grid__name {
+    grid-column: 2;
+    padding-top: 0;
+  }
+  
+  .team-grid__label {
+    grid-row: span 2;
+  }
+  
+  .team-grid__separator {
+    grid-column: 1 / -1;
+  }
 }
 

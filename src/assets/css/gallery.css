@@ -13,7 +13,7 @@
 
 .gallery__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1px;
   background-color: var(--color-border);
   border: 1px solid var(--color-border);
@@ -145,6 +145,29 @@
   transform: translateY(-50%);
 }
 
+/* Mobile adjustments for lightbox controls */
+@media (max-width: 768px) {
+  .gallery__prev,
+  .gallery__next {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .gallery__prev {
+    left: 20px;
+  }
+
+  .gallery__next {
+    right: 20px;
+  }
+  
+  .gallery__close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
 .gallery__counter {
   position: absolute;
   bottom: 20px;
@@ -155,4 +178,9 @@
   padding: 4px 12px;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+}
+@media (max-width: 768px) {
+    .gallery__counter {
+        bottom: 70px; /* moved up to clear buttons */
+    }
 }
