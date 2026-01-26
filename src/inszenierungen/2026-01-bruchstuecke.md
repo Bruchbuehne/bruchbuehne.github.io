@@ -14,7 +14,7 @@ cast:
     actor: Lio 
     scene: Engel & Teufel
   - role: Teufel
-    actor: Sophia Tiemann Céo Tiemann Cé
+    actor: Sophia Tiemann Céo
     scene: Engel & Teufel
   - role: Socke
     actor: Miriam Carolina Mauthe
@@ -98,7 +98,7 @@ cast:
     actor: Sarina Vitillo 
     scene: Pausen
   - role: Person
-    actor: Ilea 
+    actor: Sophia Tiemann Céo
     scene: Die Essenz
   - role: A
     actor: Anka Charlotte Doese 
