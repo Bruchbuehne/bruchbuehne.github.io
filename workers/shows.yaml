@@ -1,20 +1,7 @@
 # Bruchbühne Shows Configuration
 # Edit this file to add/update shows, then deploy to update the database
 
-shows:
-  # Bruchstücke - Januar 2026
-  - title: "Bruchstücke"
-    author: "Bruchbühne Ensemble"
-    location: "Brechtbau Theater"
-    dates:
-      - date: "2026-01-26 19:00:00"
-        capacity: 60
-      - date: "2026-01-28 19:00:00"
-        capacity: 60
-      - date: "2026-01-29 19:00:00"
-        capacity: 60
-      - date: "2026-01-30 19:00:00"
-        capacity: 60
+shows: []
 
 # How to add a new show:
 # 1. Copy the template below

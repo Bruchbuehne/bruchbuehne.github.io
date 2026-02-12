@@ -6,8 +6,14 @@ permalink: /reservierungen/
 
 <div class="container page-wrapper">
   <header class="page-header">
-    <h1 class="page-header__title">Karten für <a href="{{ site.currentProduction.url }}">{{ site.currentProduction.title }}</a> reservieren</h1>
-    {% if site.currentProduction %}
+    <h1 class="page-header__title">
+      {% if site.reservations and site.currentProduction %}
+        Karten für <a href="{{ site.currentProduction.url }}">{{ site.currentProduction.title }}</a> reservieren
+      {% else %}
+        Reservierungen
+      {% endif %}
+    </h1>
+    {% if site.reservations and site.currentProduction %}
       <p class="page-header__subtitle">Reserviert euch hier Karten für unsere kommenden Vorstellungen!</p>
     {% else %}
       <p class="page-header__subtitle">Gerade sind keine Vorstellungen zur Reservierung verfügbar.</p>

@@ -1,5 +1,5 @@
 ---
-reservations: true
+reservations: false
 short: '2026-bruchstuecke'
 title: 'Bruchstücke'
 author: Bruchbühnenensemble & Freunde
