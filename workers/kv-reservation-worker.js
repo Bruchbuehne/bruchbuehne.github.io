@@ -20,51 +20,55 @@ export default {
     }
 
     const url = new URL(request.url);
+    // Strip /api prefix when routed via bruchbuehne.de/api*
+    const pathname = url.pathname.startsWith('/api')
+      ? url.pathname.slice(4) || '/'
+      : url.pathname;
 
     try {
       // GET /availability - Return available shows
-      if (url.pathname === '/availability' && request.method === 'GET') {
+      if (pathname === '/availability' && request.method === 'GET') {
         return await handleAvailability(env, corsHeaders);
       }
 
       // POST /reserve - Create reservation
-      if (url.pathname === '/reserve' && request.method === 'POST') {
+      if (pathname === '/reserve' && request.method === 'POST') {
         return await handleReservation(request, env, corsHeaders);
       }
 
       // GET /admin/reservations - List all reservations (requires auth)
-      if (url.pathname === '/admin/reservations' && request.method === 'GET') {
+      if (pathname === '/admin/reservations' && request.method === 'GET') {
         return await handleAdminReservations(request, env, corsHeaders);
       }
 
       // GET /admin/shows - List all shows (requires auth)
-      if (url.pathname === '/admin/shows' && request.method === 'GET') {
+      if (pathname === '/admin/shows' && request.method === 'GET') {
         return await handleAdminShows(request, env, corsHeaders);
       }
 
       // GET /admin/export - Export reservations as CSV (requires auth)
-      if (url.pathname === '/admin/export' && request.method === 'GET') {
+      if (pathname === '/admin/export' && request.method === 'GET') {
         return await handleAdminExport(request, env, corsHeaders);
       }
 
       // DELETE /admin/reservations/:id - Delete a reservation (requires auth)
-      if (url.pathname.startsWith('/admin/reservations/') && request.method === 'DELETE') {
-        const reservationId = url.pathname.split('/').pop();
+      if (pathname.startsWith('/admin/reservations/') && request.method === 'DELETE') {
+        const reservationId = pathname.split('/').pop();
         return await handleDeleteReservation(request, env, corsHeaders, reservationId);
       }
 
       // GET /favicon.ico - Return a simple favicon
-      if (url.pathname === '/favicon.ico') {
+      if (pathname === '/favicon.ico') {
         return new Response(null, { status: 204 });
       }
 
       // GET / - Redirect to main website
-      if (url.pathname === '/') {
+      if (pathname === '/') {
         return Response.redirect('https://bruchbuehne.de', 307);
       }
 
       // GET /admin - Admin dashboard HTML
-      if (url.pathname === '/admin' || url.pathname === '/admin/') {
+      if (pathname === '/admin' || pathname === '/admin/') {
         return handleAdminDashboard();
       }
 

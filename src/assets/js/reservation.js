@@ -12,16 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetch available shows on page load
   async function loadShows(retryCount = 0) {
     try {
-      // Add timeout to detect hanging requests (longer for Android due to known issues)
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), isAndroidChrome ? 15000 : 10000);
-
-      const response = await fetch(`${WORKER_URL}/availability?t=${Date.now()}`, {
-        signal: controller.signal,
-        mode: 'cors',
-        credentials: 'omit'
-      });
-      clearTimeout(timeoutId);
+      const response = await fetch(`${WORKER_URL}/availability?t=${Date.now()}`);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}: ${response.statusText}`);
@@ -215,18 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData(this);
 
       try {
-        // Add timeout to detect hanging requests
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout for submission
-
         const response = await fetch(`${WORKER_URL}/reserve`, {
           method: 'POST',
-          body: formData,
-          signal: controller.signal,
-          mode: 'cors', // Explicitly set CORS mode
-          credentials: 'omit' // Don't send credentials
+          body: formData
         });
-        clearTimeout(timeoutId);
 
         const result = await response.text();
 
