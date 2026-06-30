@@ -16,11 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), isAndroidChrome ? 15000 : 10000);
 
-      const response = await fetch(`${WORKER_URL}/availability`, {
+      const response = await fetch(`${WORKER_URL}/availability?t=${Date.now()}`, {
         signal: controller.signal,
-        cache: 'no-cache', // Prevent stale cache issues
-        mode: 'cors', // Explicitly set CORS mode
-        credentials: 'omit' // Don't send credentials
+        mode: 'cors',
+        credentials: 'omit'
       });
       clearTimeout(timeoutId);
 
