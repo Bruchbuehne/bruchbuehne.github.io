@@ -29,11 +29,11 @@ function kvPut(shows, useRemote = false) {
 
     writeFileSync(tmpFile, json);
 
-    const remoteFlag = ''; // Production is default in Wrangler v3
+    const remoteFlag = useRemote ? '--remote' : '';
 
     try {
         execSync(
-            `wrangler kv key put "${KV_KEY}" --path="${tmpFile}" --namespace-id="${namespaceId}"`,
+            `wrangler kv key put "${KV_KEY}" --path="${tmpFile}" --namespace-id="${namespaceId}" ${remoteFlag}`,
             { encoding: 'utf-8', stdio: 'inherit' }
         );
         unlinkSync(tmpFile);
@@ -101,7 +101,7 @@ function syncShows() {
         let existingShows = [];
         try {
             const result = execSync(
-                `wrangler kv key get "${KV_KEY}" --namespace-id="${namespaceId}"`,
+                `wrangler kv key get "${KV_KEY}" --namespace-id="${namespaceId}" ${useRemote ? '--remote' : ''}`,
                 { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
             );
             existingShows = JSON.parse(result);

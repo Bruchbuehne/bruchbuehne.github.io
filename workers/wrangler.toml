@@ -5,13 +5,6 @@ name = "bruchbuehne-reservations"
 main = "kv-reservation-worker.js"
 compatibility_date = "2024-01-01"
 
-# Routes - API endpoints on your custom domain
-routes = [
-  { pattern = "bruchbuehne.de/admin*", custom_domain = true },
-  { pattern = "bruchbuehne.de/availability", custom_domain = true },
-  { pattern = "bruchbuehne.de/reserve", custom_domain = true }
-]
-
 # KV Namespace binding
 [[kv_namespaces]]
 binding = "RESERVATIONS"
