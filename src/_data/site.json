@@ -4,9 +4,9 @@
   "url": "https://bruchbuehne.de",
   "author": "Bruchbühne Tübingen",
   "language": "de",
-  "reservations": false,
+  "reservations": true,
   "currentProduction": {
-    "title": "Bruchstücke",
-    "url": "/inszenierungen/2026-bruchstuecke/"
+    "title": "Die Kahle Sängerin",
+    "url": "/inszenierungen/2026-kahle-saengerin/"
   }
 }
