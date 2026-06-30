@@ -42,6 +42,11 @@ export default {
         return await handleAdminShows(request, env, corsHeaders);
       }
 
+      // GET /admin/export - Export reservations as CSV (requires auth)
+      if (url.pathname === '/admin/export' && request.method === 'GET') {
+        return await handleAdminExport(request, env, corsHeaders);
+      }
+
       // DELETE /admin/reservations/:id - Delete a reservation (requires auth)
       if (url.pathname.startsWith('/admin/reservations/') && request.method === 'DELETE') {
         const reservationId = url.pathname.split('/').pop();
@@ -649,6 +654,44 @@ function isValidEmail(email) {
 }
 
 /**
+ * Export reservations as CSV grouped by show date
+ */
+async function handleAdminExport(request, env, corsHeaders) {
+  const auth = request.headers.get('Authorization');
+  if (!auth || auth !== `Bearer ${env.ADMIN_TOKEN}`) {
+    return new Response('Unauthorized', { status: 401, headers: corsHeaders });
+  }
+
+  const list = await env.RESERVATIONS.list({ prefix: 'reservation:' });
+  const reservations = [];
+  for (const key of list.keys) {
+    const resJson = await env.RESERVATIONS.get(key.name);
+    if (resJson) reservations.push(JSON.parse(resJson));
+  }
+
+  reservations.sort((a, b) => {
+    const dateCompare = a.showDate.localeCompare(b.showDate);
+    return dateCompare !== 0 ? dateCompare : a.name.localeCompare(b.name);
+  });
+
+  const escape = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+
+  let csv = 'Vorstellung;Datum;Name;E-Mail;Anzahl Karten;Reserviert am\r\n';
+  for (const r of reservations) {
+    const createdAt = new Date(r.createdAt).toLocaleString('de-DE');
+    csv += [escape(r.showTitle), escape(r.showDateFormatted), escape(r.name), escape(r.email), r.tickets, escape(createdAt)].join(';') + '\r\n';
+  }
+
+  return new Response(csv, {
+    headers: {
+      ...corsHeaders,
+      'Content-Type': 'text/csv; charset=utf-8',
+      'Content-Disposition': 'attachment; filename="reservierungen.csv"',
+    }
+  });
+}
+
+/**
  * Admin Dashboard HTML
  */
 function handleAdminDashboard() {
@@ -1006,6 +1049,7 @@ function handleAdminDashboard() {
 
   <script>
     let token = localStorage.getItem('adminToken');
+    let allReservations = [];
 
     // Check if already logged in
     if (token) {
@@ -1061,6 +1105,7 @@ function handleAdminDashboard() {
         updateStats(reservations, shows);
 
         // Render tables
+        allReservations = reservations;
         renderReservations(reservations);
         renderShows(shows);
 
@@ -1157,6 +1202,28 @@ function handleAdminDashboard() {
 
     window.deleteReservation = deleteReservation;
 
+    function exportShowCsv(showId, dateLabel) {
+      const filtered = allReservations.filter(r => r.showId === showId);
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+      const escape = (v) => \`"\${String(v ?? '').replace(/"/g, '""')}"\`;
+      let csv = 'Name;E-Mail;Anzahl Karten;Reserviert am\\r\\n';
+      for (const r of filtered) {
+        const createdAt = new Date(r.createdAt).toLocaleString('de-DE');
+        csv += [escape(r.name), escape(r.email), r.tickets, escape(createdAt)].join(';') + '\\r\\n';
+      }
+
+      const blob = new Blob(['\\uFEFF' + csv], { type: 'text/csv; charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'reservierungen-' + dateLabel.replace(/[^a-zA-Z0-9]/g, '-') + '.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    window.exportShowCsv = exportShowCsv;
+
     function renderShows(shows) {
       const container = document.getElementById('shows-container');
 
@@ -1191,12 +1258,13 @@ function handleAdminDashboard() {
         showRows += '<td>' + escapeHtml(s.dateFormatted) + '</td>';
         showRows += '<td>' + s.capacity + ' / <span style="color:var(--color-accent)">' + reserved + '</span></td>';
         showRows += '<td>' + statusBadge + '</td>';
+        showRows += '<td style="text-align:right"><button class="delete-btn" style="color:var(--color-text); border-color:var(--color-border)" onclick="exportShowCsv(&quot;' + s.id + '&quot;, &quot;' + s.dateFormatted + '&quot;)">CSV</button></td>';
         showRows += '</tr>';
       });
 
       const html = '<table><thead><tr>' +
         '<th>Titel</th><th>Datum</th>' +
-        '<th>Verf / Res</th><th>Status</th>' +
+        '<th>Verf / Res</th><th>Status</th><th></th>' +
         '</tr></thead><tbody>' + showRows + '</tbody></table>';
         
       container.innerHTML = html;
