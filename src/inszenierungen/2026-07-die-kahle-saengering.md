@@ -1,5 +1,5 @@
 ---
-reservations: false
+reservations: true
 short: '2026-kahle-saengerin'
 title: 'Die Kahle Sängerin'
 author: 'Eugène Ionesco'
@@ -7,8 +7,8 @@ blurb: ''
 date: 2026-05-26
 dates: "8., 9., 11. & 12. Juli 2026"
 semester: SoSe 26
-poster: /assets/2026-saengerin/Chauve_Noctambule.jpg
-credit: "By Serge Lachinov (копия, обработка для wiki) - Книга: Т. К. Якимович Драматургия и театр современной Франции. Киев. Издательство КГУ. 1968, CC BY-SA 3.0 https://commons.wikimedia.org/w/index.php?curid=4931797"
+poster: /assets/2026-saengerin/Kahle_Saengerin_Poster_V1.6.1_Final.png
+credit: "Dominic Lupas, "
 
 
 
