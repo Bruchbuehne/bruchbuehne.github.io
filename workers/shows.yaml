@@ -7,10 +7,6 @@ shows:
     author: "Eugène Ionesco"
     location: "Wohnprojekt \"Lichti\" auf dem Österberg"
     dates:
-      - date: "2026-07-08 19:00:00"
-        capacity: 50
-      - date: "2026-07-09 19:00:00"
-        capacity: 50
       - date: "2026-07-11 19:00:00"
         capacity: 50
       - date: "2026-07-12 19:00:00"
