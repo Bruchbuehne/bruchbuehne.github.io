@@ -5,14 +5,17 @@ title: 'Die Kahle Sängerin'
 author: 'Eugène Ionesco'
 blurb: ''
 date: 2026-05-26
-dates: "8., 9., 11. & 12. Juli 2026"
+dates: "11. & 12. Juli 2026"
 semester: SoSe 26
-poster: /assets/2026-saengerin/Kahle_Saengerin_Poster_V1.6.1_Final.png
+poster: /assets/2026-saengerin/Kahle_Saengerin_Poster_V1.6.1_ausfall.png
 credit: "Dominic Lupas, "
 
 
 
 ---
+
+Leider müssen die Vorführungen am 8. und 9. krankheitsbedingt ausfallen.
+
 
 "Man muss im Leben durchs Fenster schauen."
 
